@@ -1,0 +1,25 @@
+{
+  "rules": [
+    {
+      "rule": "RefundRequest",
+      "property": "Integer",
+      "operator": "Greater than",
+      "value": "60",
+      "id": 1
+    },
+    {
+      "rule": "RefundRequest",
+      "property": "String",
+      "operator": "Not Contains",
+      "value": "Sex",
+      "id": 2
+    },
+    {
+      "rule": "RefundRequest",
+      "property": "Integer",
+      "operator": "Greater than",
+      "value": "50",
+      "id": 3
+    }
+  ]
+}
