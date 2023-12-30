@@ -1,8 +1,7 @@
 // ** Reducers Imports
-import layout from "./layout"
-import navbar from "./navbar"
-import rule from "./rules"
+import layout from "./layout";
+import navbar from "./navbar";
 
-const rootReducer = { navbar, layout, rule }
+const rootReducer = { navbar, layout };
 
-export default rootReducer
+export default rootReducer;
