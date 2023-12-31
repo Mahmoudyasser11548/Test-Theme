@@ -17,10 +17,10 @@ const Customizer = (props) => {
   // ** Props
   const {
     skin,
-    isRtl,
+    isRTL,
     layout,
     setSkin,
-    setIsRtl,
+    setValue,
     isHidden,
     setLayout,
     navbarType,
@@ -283,8 +283,8 @@ const Customizer = (props) => {
                 type="switch"
                 id="rtl"
                 name="RTL"
-                checked={isRtl}
-                onChange={() => setIsRtl(!isRtl)}
+                checked={isRTL}
+                onChange={() => setValue(!isRTL)}
               />
             </div>
           </div>
