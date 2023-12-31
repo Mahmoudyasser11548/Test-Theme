@@ -41,7 +41,7 @@ const HorizontalLayout = (props) => {
 
   // ** Hooks
   const { skin, setSkin } = useSkin();
-  const [isRtl, setIsRtl] = useRTL();
+  const [isRTL, setValue] = useRTL();
   const { navbarType, setNavbarType } = useNavbarType();
   const { footerType, setFooterType } = useFooterType();
   const { navbarColor, setNavbarColor } = useNavbarColor();
@@ -116,7 +116,7 @@ const HorizontalLayout = (props) => {
       className={classnames(
         `wrapper horizontal-layout horizontal-menu ${
           navbarWrapperClasses[navbarType] || "navbar-floating"
-        } ${footerClasses[footerType] || "footer-static"} menu-expanded`
+        } ${footerClasses[footerType] || "footer-static"} menu-expanded`,
       )}
       {...(isHidden ? { "data-col": "1-column" } : {})}
     >
@@ -127,7 +127,7 @@ const HorizontalLayout = (props) => {
           "header-navbar navbar-fixed align-items-center navbar-shadow navbar-brand-center",
           {
             "navbar-scrolled": navbarScrolled,
-          }
+          },
         )}
       >
         {!navbar && (
@@ -167,7 +167,7 @@ const HorizontalLayout = (props) => {
                 "floating-nav":
                   (!navbarClasses[navbarType] && navbarType !== "static") ||
                   navbarType === "floating",
-              }
+              },
             )}
           >
             {menu ? (
@@ -183,10 +183,10 @@ const HorizontalLayout = (props) => {
       {themeConfig.layout.customizer === true ? (
         <Customizer
           skin={skin}
-          isRtl={isRtl}
+          isRTL={isRTL}
           layout={layout}
           setSkin={setSkin}
-          setIsRtl={setIsRtl}
+          setValue={setValue}
           isHidden={isHidden}
           setLayout={setLayout}
           footerType={footerType}
@@ -207,7 +207,7 @@ const HorizontalLayout = (props) => {
           `footer footer-light ${footerClasses[footerType] || "footer-static"}`,
           {
             "d-none": footerType === "hidden",
-          }
+          },
         )}
       >
         {footer ? (

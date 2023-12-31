@@ -8,7 +8,7 @@ import { store } from "./redux/store";
 import { Provider } from "react-redux";
 
 // ** ThemeColors Context
-
+import IntlProviderWrapper from "./utility/context/IntlProviderWrapper";
 import { ThemeContext } from "./utility/context/ThemeColors";
 
 // ** ThemeConfig
@@ -53,15 +53,17 @@ root.render(
     <Provider store={store}>
       <Suspense fallback={<Spinner />}>
         <ThemeContext>
-          <LazyApp />
-          <Toaster
-            position={themeConfig.layout.toastPosition}
-            toastOptions={{ className: "react-hot-toast" }}
-          />
+          <IntlProviderWrapper>
+            <LazyApp />
+            <Toaster
+              position={themeConfig.layout.toastPosition}
+              toastOptions={{ className: "react-hot-toast" }}
+            />
+          </IntlProviderWrapper>
         </ThemeContext>
       </Suspense>
     </Provider>
-  </BrowserRouter>
+  </BrowserRouter>,
 );
 
 // If you want your app to work offline and load faster, you can change
