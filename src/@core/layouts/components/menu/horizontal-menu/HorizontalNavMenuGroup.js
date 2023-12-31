@@ -5,7 +5,6 @@ import { Link, useLocation } from "react-router-dom";
 // ** Third Party Components
 import classnames from "classnames";
 import { usePopper } from "react-popper";
-import { useTranslation } from "react-i18next";
 
 // ** Utils
 import { hasActiveChild } from "@layouts/utils";
@@ -15,6 +14,7 @@ import { useRTL } from "@hooks/useRTL";
 
 // ** Horizontal Menu Items Component
 import HorizontalNavMenuItems from "./HorizontalNavMenuItems";
+import { useLingui } from "@lingui/react";
 
 const applyHeight = {
   enabled: true,
@@ -54,6 +54,7 @@ const HorizontalNavMenuGroup = (props) => {
 
   // ** Hooks
   const [isRtl] = useRTL();
+  const { i18n } = useLingui();
 
   // ** Vars
   const popperOffsetHorizontal = isRtl ? 16 : -16;
@@ -61,7 +62,6 @@ const HorizontalNavMenuGroup = (props) => {
   const popperPlacementSubMenu = isRtl ? "left-start" : "right-start";
 
   // ** Hooks
-  const { t } = useTranslation();
   const currentURL = useLocation().pathname;
   const { update, styles, attributes } = usePopper(
     referenceElement,
@@ -78,7 +78,7 @@ const HorizontalNavMenuGroup = (props) => {
           },
         },
       ],
-    }
+    },
   );
 
   const handleMouseEnter = () => {
@@ -107,7 +107,7 @@ const HorizontalNavMenuGroup = (props) => {
         })}
       >
         {item.icon}
-        <span>{t(item.title)}</span>
+        <span>{i18n._(item.title)}</span>
       </Link>
       <ul
         ref={setPopperElement}

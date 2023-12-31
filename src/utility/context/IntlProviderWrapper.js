@@ -7,6 +7,13 @@ import { changeLocale } from "@redux/app";
 // Context
 export const IntlContext = createContext();
 
+// Activate the language dynamically
+async function dynamicActivate(locale) {
+  const { messages } = await import(`../../locales/${locale}.po`);
+  i18n.load(locale, messages);
+  i18n.activate(locale);
+}
+
 const IntlProviderWrapper = ({ children }) => {
   const dispatch = useDispatch();
 
@@ -20,13 +27,6 @@ const IntlProviderWrapper = ({ children }) => {
   useEffect(() => {
     setLocale(currentLang.code);
   }, []);
-
-  // Activate the language dynamically
-  async function dynamicActivate(locale) {
-    const { messages } = await import(`../../locales/${locale}.po`);
-    i18n.load(locale, messages);
-    i18n.activate(locale);
-  }
 
   useEffect(() => {
     dispatch(changeLocale({ code: currentLang.code }));

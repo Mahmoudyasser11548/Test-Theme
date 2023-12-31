@@ -3,14 +3,14 @@ import { NavLink } from "react-router-dom";
 
 // ** Third Party Components
 import classnames from "classnames";
-import { useTranslation } from "react-i18next";
+import { useLingui } from "@lingui/react";
 
 const HorizontalNavMenuLink = ({ item, isChild, setMenuOpen }) => {
   // ** Conditional Link Tag, if item has newTab or externalLink props use <a> tag else use NavLink
   const LinkTag = item.externalLink ? "a" : NavLink;
 
   // ** Hooks
-  const { t } = useTranslation();
+  const { i18n } = useLingui();
 
   const handleClick = () => {
     if (setMenuOpen) {
@@ -58,7 +58,7 @@ const HorizontalNavMenuLink = ({ item, isChild, setMenuOpen }) => {
         /*eslint-enable */
       >
         {item.icon}
-        <span>{t(item.title)}</span>
+        <span>{i18n._(item.title)}</span>
       </LinkTag>
     </li>
   );

@@ -1,7 +1,8 @@
-import React from "react"
+import { Trans } from "@lingui/react";
+import React from "react";
 
 const Rules = () => {
-  return <div>Rules</div>
-}
+  return <Trans id="rule" />;
+};
 
-export default Rules
+export default Rules;
