@@ -1,6 +1,13 @@
 import React, { useState } from "react";
-import { CustomDataTable } from "../../Components";
+import {
+  CustomDataTable,
+  DatePickerField,
+  InputField,
+  SelectField,
+  SwitchField,
+} from "../../Components";
 import Columns from "./Columns";
+import { Form, Formik } from "formik";
 
 const Rules = () => {
   const products = [
@@ -46,8 +53,15 @@ const Rules = () => {
       name: "Chiken",
       category: "Foods",
       quantity: "5",
+      status: "INSTOCK",
       date: "2024-1-2",
     },
+  ];
+
+  const options = [
+    { name: 1, label: "Option 1" },
+    { name: 2, label: "Option 2" },
+    // Add more options as needed
   ];
 
   const [product, setProduct] = useState({});
@@ -55,12 +69,16 @@ const Rules = () => {
   console.log(product);
   const deleteHandler = () => {};
   const editHandler = () => {};
+  const onSubmit = (values) => {
+    console.log(values);
+  };
   return (
     <>
       <CustomDataTable
         data={products}
         columns={Columns(editHandler, deleteHandler)}
-        header={true}
+        noHeader={false}
+        resizableColumns={true}
         selection={{
           mode: "single",
           checked: true,
@@ -68,6 +86,33 @@ const Rules = () => {
           handleOnChangeSelect: (e) => setProduct(e),
         }}
       />
+
+      <Formik
+        initialValues={{
+          username: "",
+          gender: "",
+          date: "",
+          active: false,
+        }}
+        onSubmit={onSubmit}
+      >
+        <Form>
+          <InputField name="username" label="Username" />
+          <SelectField
+            name="gender"
+            label="Select an Option"
+            options={options}
+            keyValue="name"
+            title="label"
+          />
+          <DatePickerField
+            name="date"
+            label="Select Date"
+            placeholder="Choose a date"
+          />
+          <SwitchField name="active" label="Active" />
+        </Form>
+      </Formik>
     </>
   );
 };
