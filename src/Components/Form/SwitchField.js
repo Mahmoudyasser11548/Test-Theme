@@ -2,25 +2,24 @@
 import React from "react";
 import { useField } from "formik";
 import { InputSwitch } from "primereact/inputswitch";
-import { Label, FormGroup } from "reactstrap";
 
 const SwitchField = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
 
   return (
-    <FormGroup className="d-flex justify-content-center align-align-items-center">
-      {label && (
-        <label className="form-label me-1" for={field.name}>
-          {label}
-        </label>
-      )}
+    <div className="d-flex align-items-center">
       <InputSwitch
         checked={field.value}
         onChange={(e) => helpers.setValue(e.value)}
         {...props}
         {...field}
       />
-    </FormGroup>
+      {label && (
+        <label className="ms-1" htmlFor={field.name}>
+          {label}
+        </label>
+      )}
+    </div>
   );
 };
 

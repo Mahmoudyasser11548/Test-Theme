@@ -21,6 +21,7 @@ const DatePickerField = ({
         placeholder={placeholder}
         showTime={enableTime}
         value={field.value}
+        showIcon
         onChange={(e) => {
           helpers.setValue(e.value);
           callBack({ name: field.name, value: e.value });

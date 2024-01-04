@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import {
+  CheckboxField,
   CustomDataTable,
   DatePickerField,
   InputField,
+  MultiSelectField,
+  PasswordField,
+  RadioField,
   SelectField,
   SwitchField,
 } from "../../Components";
@@ -61,7 +65,21 @@ const Rules = () => {
   const options = [
     { name: 1, label: "Option 1" },
     { name: 2, label: "Option 2" },
-    // Add more options as needed
+  ];
+
+  const radioOptions = [
+    { label: "Option 1", value: "option1" },
+    { label: "Option 2", value: "option2" },
+  ];
+
+  const CheckboxOptions = [
+    { label: "Option 1", value: "option1" },
+    { label: "Option 2", value: "option2" },
+  ];
+
+  const multiSelectOptions = [
+    { id: 1, name: "Option 1" },
+    { id: 2, name: "Option 2" },
   ];
 
   const [product, setProduct] = useState({});
@@ -93,6 +111,10 @@ const Rules = () => {
           gender: "",
           date: "",
           active: false,
+          radio: false,
+          checkbox: "",
+          multiSelect: [],
+          password: "",
         }}
         onSubmit={onSubmit}
       >
@@ -111,6 +133,20 @@ const Rules = () => {
             placeholder="Choose a date"
           />
           <SwitchField name="active" label="Active" />
+          <RadioField name="radio" options={radioOptions} />
+          <CheckboxField name="checkbox" options={CheckboxOptions} />
+          <MultiSelectField
+            name="multiSelect"
+            label="Select Options:"
+            options={multiSelectOptions}
+            keyValue="id"
+            title="name"
+          />
+          <PasswordField
+            name="password"
+            label="Enter Password"
+            placeholder="Enter your password"
+          />
         </Form>
       </Formik>
     </>
