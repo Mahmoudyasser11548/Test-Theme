@@ -3,16 +3,19 @@ import {
   CheckboxField,
   CustomDataTable,
   DatePickerField,
+  ImageField,
   InputField,
   MultiSelectField,
   PasswordField,
   RadioField,
   SelectField,
   SwitchField,
+  VideoField,
 } from "../../Components";
 import Columns from "./Columns";
 import { Form, Formik } from "formik";
-
+import useFile from "@hooks/useFile";
+import { Button } from "primereact/button";
 const Rules = () => {
   const products = [
     {
@@ -84,12 +87,9 @@ const Rules = () => {
 
   const [product, setProduct] = useState({});
 
-  console.log(product);
   const deleteHandler = () => {};
   const editHandler = () => {};
-  const onSubmit = (values) => {
-    console.log(values);
-  };
+  const onSubmit = () => {};
   return (
     <>
       <CustomDataTable
@@ -115,6 +115,8 @@ const Rules = () => {
           checkbox: "",
           multiSelect: [],
           password: "",
+          image: useFile(),
+          video: useFile(),
         }}
         onSubmit={onSubmit}
       >
@@ -142,11 +144,11 @@ const Rules = () => {
             keyValue="id"
             title="name"
           />
-          <PasswordField
-            name="password"
-            label="Enter Password"
-            placeholder="Enter your password"
-          />
+          <PasswordField name="password" label="Enter Password" />
+          <ImageField name="image" label="image" width={200} height={200} />
+          <VideoField name="video" label="video" width={200} height={200} />
+
+          <Button type="submit">Submit</Button>
         </Form>
       </Formik>
     </>

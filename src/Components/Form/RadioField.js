@@ -1,16 +1,18 @@
 import React, { Fragment } from "react";
 import { useField } from "formik";
 import { RadioButton } from "primereact/radiobutton";
+import classNames from "classnames";
 
 const RadioField = ({ options, ...props }) => {
-  const [field, , helpers] = useField(props);
-
+  const [field, meta, helpers] = useField(props);
+  const { touched, error } = meta;
   return (
     <Fragment>
       {options.map((option) => (
         <div key={option.value} className="p-col">
           <div className="p-field-radiobutton">
             <RadioButton
+              className={classNames({ "p-invalid": error && touched })}
               id={field.name}
               {...field}
               {...props}

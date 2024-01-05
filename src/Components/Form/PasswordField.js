@@ -1,31 +1,33 @@
 import React from "react";
-import { ErrorMessage, useField } from "formik";
+import { useField } from "formik";
 import { Password } from "primereact/password";
+import classNames from "classnames";
+import { FormFeedback } from "reactstrap";
 
 const PasswordField = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
-  const { value, setValue } = helpers;
+  const { value } = field;
 
   const handlePasswordChange = (e) => {
-    setValue(e.target.value);
+    helpers.setValue(e.target.value);
   };
 
   return (
     <div>
-      <label htmlFor={field.name}>{label}</label>
+      {label && <label htmlFor={field.name}>{label}</label>}
       <div>
         <Password
-          id={props.name}
+          className={classNames({ "p-invalid": error && touched })}
+          {...field}
+          id={field.name}
           value={value || ""}
           onChange={handlePasswordChange}
           feedback={false}
           toggleMask
-          {...props}
-          {...field}
         />
         {touched && error && (
-          <ErrorMessage className="p-error">{error}</ErrorMessage>
+          <FormFeedback className="p-error">{error}</FormFeedback>
         )}
       </div>
     </div>

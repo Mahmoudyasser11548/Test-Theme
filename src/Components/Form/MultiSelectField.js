@@ -1,9 +1,10 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-confusing-arrow */
 import React from "react";
-import { ErrorMessage, useField } from "formik";
+import { useField } from "formik";
 import { MultiSelect } from "primereact/multiselect";
 import classNames from "classnames";
+import { FormFeedback } from "reactstrap";
 
 function MultiSelectField({ label, options, keyValue, title, ...props }) {
   const [field, meta, helpers] = useField(props);
@@ -39,7 +40,7 @@ function MultiSelectField({ label, options, keyValue, title, ...props }) {
         {...props}
       />
       {error && touched && (
-        <ErrorMessage className="p-error">{error}</ErrorMessage>
+        <FormFeedback className="p-error">{error}</FormFeedback>
       )}
     </div>
   );

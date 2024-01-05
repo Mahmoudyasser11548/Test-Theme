@@ -19,7 +19,7 @@ module.exports = {
     },
   },
   rules: {
-    "no-console": "off",
+    "no-console": "error",
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
 
     // Best Practices

@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { ErrorMessage, useField } from "formik";
+import { useField } from "formik";
 import { Dropdown } from "primereact/dropdown";
-import { Label, FormGroup } from "reactstrap";
+import { FormFeedback } from "reactstrap";
 import { useLanguage } from "@hooks/useLanguage";
+import classNames from "classnames";
 
 function SelectField({
   label,
@@ -36,9 +37,10 @@ function SelectField({
 
   return (
     <div className="p-field d-flex flex-column">
-      <label htmlFor={field.name}>{label}</label>
+      {label && <label htmlFor={field.name}>{label}</label>}
       <Dropdown
         value={selectedOption}
+        className={classNames({ "p-invalid": error && touched }, "p-dropdown")}
         options={options}
         onChange={(e) => {
           helpers.setTouched(true);
@@ -53,11 +55,10 @@ function SelectField({
         optionLabel={handleGetLabel}
         showClear
         {...props}
-        className="p-dropdown"
         {...fieldProps}
       />
       {error && touched && (
-        <ErrorMessage className="p-error">{error}</ErrorMessage>
+        <FormFeedback className="p-error">{error}</FormFeedback>
       )}
     </div>
   );

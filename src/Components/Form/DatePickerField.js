@@ -1,6 +1,8 @@
 import React from "react";
-import { ErrorMessage, useField } from "formik";
+import { useField } from "formik";
 import { Calendar } from "primereact/calendar";
+import classNames from "classnames";
+import { FormFeedback } from "reactstrap";
 
 const DatePickerField = ({
   label,
@@ -17,7 +19,7 @@ const DatePickerField = ({
       <label htmlFor={field.name}>{label}</label>
       <Calendar
         id={props.id || props.name}
-        className={touched && error ? "p-invalid" : ""}
+        className={classNames({ "p-invalid": error && touched })}
         placeholder={placeholder}
         showTime={enableTime}
         value={field.value}
@@ -28,7 +30,9 @@ const DatePickerField = ({
         }}
         {...props}
       />
-      {touched && error && <ErrorMessage>{error}</ErrorMessage>}
+      {touched && error && (
+        <FormFeedback className="p-error">{error}</FormFeedback>
+      )}
     </div>
   );
 };

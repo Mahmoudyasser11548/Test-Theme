@@ -1,6 +1,7 @@
 import React from "react";
 import { Checkbox } from "primereact/checkbox";
-import { ErrorMessage, useField } from "formik";
+import { useField } from "formik";
+import { FormFeedback } from "reactstrap";
 
 const CheckboxField = ({ options, ...props }) => {
   const [field, meta, helpers] = useField(props);
@@ -37,9 +38,7 @@ const CheckboxField = ({ options, ...props }) => {
         </div>
       ))}
       {touched && error && (
-        <ErrorMessage name={field.name} className="p-error">
-          {error}
-        </ErrorMessage>
+        <FormFeedback className="p-error">{error}</FormFeedback>
       )}
     </div>
   );
