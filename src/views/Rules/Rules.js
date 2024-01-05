@@ -7,6 +7,8 @@ import {
   InputField,
   MultiSelectField,
   PasswordField,
+  PdfField,
+  PhoneField,
   RadioField,
   SelectField,
   SwitchField,
@@ -115,8 +117,10 @@ const Rules = () => {
           checkbox: "",
           multiSelect: [],
           password: "",
+          phone: "",
           image: useFile(),
           video: useFile(),
+          pdf: useFile(),
         }}
         onSubmit={onSubmit}
       >
@@ -145,8 +149,16 @@ const Rules = () => {
             title="name"
           />
           <PasswordField name="password" label="Enter Password" />
+          <PhoneField name="phone" />
           <ImageField name="image" label="image" width={200} height={200} />
           <VideoField name="video" label="video" width={200} height={200} />
+          <PdfField
+            name="pdf"
+            multiple={true}
+            label="pdf"
+            width={200}
+            height={200}
+          />
 
           <Button type="submit">Submit</Button>
         </Form>

@@ -5,7 +5,6 @@
 
 import { Toast } from "primereact/toast";
 import { FileUpload } from "primereact/fileupload";
-import { Button } from "primereact/button";
 import { Tooltip } from "primereact/tooltip";
 import { useField, useFormikContext } from "formik"; // Import Formik hooks
 import { useRef } from "react";
@@ -15,6 +14,8 @@ const VideoField = ({
   width = 280,
   height = 280,
   enableRemove = true,
+  maxFileSize = 50000000,
+  multiple = false,
   // eslint-disable-next-line no-unused-vars
   ...props
 }) => {
@@ -98,10 +99,15 @@ const VideoField = ({
 
       <FileUpload
         ref={fileUploadRef}
-        name={name}
+        {...field}
+        {...props}
         url={videoValue}
         accept="video/*"
-        maxFileSize={50000000}
+        maxFileSize={maxFileSize}
+        emptyTemplate={
+          <p className="m-0">Drag and drop files to here to upload.</p>
+        }
+        multiple={multiple}
         onSelect={onVideoSelect}
         onError={onVideoRemove}
         onClear={onVideoRemove}
