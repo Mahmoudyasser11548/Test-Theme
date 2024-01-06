@@ -31,6 +31,14 @@ const PdfField = ({
 
   const isValidpdf = (file) => file?.type?.match(".pdf");
 
+  const show = (fileName) => {
+    toast.current.show({
+      severity: isValidpdf ? "success" : "danger",
+      summary: isValidpdf ? "PDF File" : "PDF not valid",
+      detail: error ? error : "PDF Upload Successful",
+    });
+  };
+
   const onPdfSelect = (e) => {
     let reader = new FileReader();
     let pdfFile = e.files[0];
@@ -49,6 +57,8 @@ const PdfField = ({
           name: fileName,
           extension,
         });
+        // Toast show function
+        show();
       };
       reader.readAsDataURL(pdfFile);
       return;
@@ -86,16 +96,16 @@ const PdfField = ({
     <div>
       <Toast ref={toast}></Toast>
 
+      <Tooltip id="choose" target=".custom-choose-btn" position="bottom" />
       <Tooltip
-        target=".custom-choose-btn"
-        content="Choose Video"
+        id="cancel"
+        target=".custom-cancel-btn"
+        content="Clear"
         position="bottom"
       />
-      <Tooltip target=".custom-cancel-btn" content="Clear" position="bottom" />
 
       <FileUpload
         ref={fileUploadRef}
-        {...field}
         {...props}
         url={pdfValue}
         accept=".pdf"

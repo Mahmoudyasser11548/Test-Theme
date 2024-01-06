@@ -1,7 +1,7 @@
 import React from "react";
 
-const Toast = () => {
-  return <div>Toast</div>;
+const ToastAlert = ({ toastRef }) => {
+  return <Toast ref={toastRef} />;
 };
 
-export default Toast;
+export default ToastAlert;

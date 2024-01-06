@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   CheckboxField,
   CustomDataTable,
+  CustomDialog,
   DatePickerField,
   ImageField,
   InputField,
@@ -9,15 +10,18 @@ import {
   PasswordField,
   PdfField,
   PhoneField,
+  PopupDialog,
   RadioField,
   SelectField,
+  SubmitButton,
   SwitchField,
   VideoField,
 } from "../../Components";
 import Columns from "./Columns";
 import { Form, Formik } from "formik";
 import useFile from "@hooks/useFile";
-import { Button } from "primereact/button";
+import { Trans } from "@lingui/react";
+
 const Rules = () => {
   const products = [
     {
@@ -91,6 +95,7 @@ const Rules = () => {
 
   const deleteHandler = () => {};
   const editHandler = () => {};
+  const confirmDeleteBanar = () => {};
   const onSubmit = () => {};
   return (
     <>
@@ -160,9 +165,26 @@ const Rules = () => {
             height={200}
           />
 
-          <Button type="submit">Submit</Button>
+          <SubmitButton label={"Submit"} />
         </Form>
       </Formik>
+      <CustomDialog
+        title={<Trans id="delete_banar" />}
+        show={true}
+        // onHide={resetDialog}
+        closeOnConfirm={true}
+        body={
+          <h3>
+            {" "}
+            <Trans id="Are_you_sure_you_want_to_delete_this_item_?" />
+          </h3>
+        }
+        onConfirmHandler={confirmDeleteBanar}
+        closeButtonTitle={"no"}
+        confirmButtonTitle={"yes"}
+      />
+
+      <PopupDialog />
     </>
   );
 };

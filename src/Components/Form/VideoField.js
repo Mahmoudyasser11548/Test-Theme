@@ -35,6 +35,14 @@ const VideoField = ({
 
   const isValidVideo = (file) => file?.type?.match("video.*");
 
+  const show = () => {
+    toast.current.show({
+      severity: isValidVideo ? "success" : "danger",
+      summary: isValidVideo ? "Video " : "Video not valid",
+      detail: error ? error : "Video Upload Successful",
+    });
+  };
+
   const onVideoSelect = (e) => {
     let reader = new FileReader();
     let vidFile = e.files[0];
@@ -53,6 +61,8 @@ const VideoField = ({
           name: fileName,
           extension,
         });
+        // Toast show function
+        show();
       };
       reader.readAsDataURL(vidFile);
       return;
@@ -90,16 +100,11 @@ const VideoField = ({
     <div>
       <Toast ref={toast}></Toast>
 
-      <Tooltip
-        target=".custom-choose-btn"
-        content="Choose Video"
-        position="bottom"
-      />
+      <Tooltip target=".custom-choose-btn" position="bottom" />
       <Tooltip target=".custom-cancel-btn" content="Clear" position="bottom" />
 
       <FileUpload
         ref={fileUploadRef}
-        {...field}
         {...props}
         url={videoValue}
         accept="video/*"

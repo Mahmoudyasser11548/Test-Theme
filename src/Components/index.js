@@ -14,3 +14,13 @@ export { default as ImageField } from "./Form/ImageField";
 export { default as VideoField } from "./Form/VideoField";
 export { default as PdfField } from "./Form/PdfField";
 export { default as SwitchField } from "./Form/SwitchField";
+
+// Btns
+export { default as SubmitButton } from "./Btns/SubmitButton";
+
+// Customs
+export { default as ToastAlert } from "./customs/Toast";
+
+// Dialogs
+export { default as CustomDialog } from "./Dialogs/CustomDialog";
+export { default as PopupDialog } from "./Dialogs/PopupDialog";
