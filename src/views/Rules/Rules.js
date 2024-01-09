@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import React, { useState } from "react";
 import {
   CheckboxField,
@@ -10,7 +11,7 @@ import {
   PasswordField,
   PdfField,
   PhoneField,
-  PopupDialog,
+  PrimaryCard,
   RadioField,
   SelectField,
   SubmitButton,
@@ -21,6 +22,7 @@ import Columns from "./Columns";
 import { Form, Formik } from "formik";
 import useFile from "@hooks/useFile";
 import { Trans } from "@lingui/react";
+import { Button } from "primereact/button";
 
 const Rules = () => {
   const products = [
@@ -99,17 +101,31 @@ const Rules = () => {
   const onSubmit = () => {};
   return (
     <>
-      <CustomDataTable
-        data={products}
-        columns={Columns(editHandler, deleteHandler)}
-        noHeader={false}
-        resizableColumns={true}
-        selection={{
-          mode: "single",
-          checked: true,
-          selected: product,
-          handleOnChangeSelect: (e) => setProduct(e),
-        }}
+      <PrimaryCard
+        breadCrumbs={[{ label: "Sample", isActive: true }]}
+        title={"Sample"}
+        listCount={12}
+        addButton={
+          <Button color="primary" className="btn-primary ml-2 rounded-pill">
+            <span className="align-middle ml-25">
+              <Trans id="Create Sample" />
+            </span>
+          </Button>
+        }
+        body={
+          <CustomDataTable
+            data={products}
+            columns={Columns(editHandler, deleteHandler)}
+            resizableColumns={false}
+            noHeader={false}
+            selection={{
+              mode: "single",
+              checked: true,
+              selected: product,
+              handleOnChangeSelect: (e) => setProduct(e),
+            }}
+          />
+        }
       />
 
       <Formik
@@ -183,8 +199,6 @@ const Rules = () => {
         closeButtonTitle={"no"}
         confirmButtonTitle={"yes"}
       />
-
-      <PopupDialog />
     </>
   );
 };

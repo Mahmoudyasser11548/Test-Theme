@@ -10,6 +10,26 @@ NOTE:
 PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
 WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
 
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .p-password {
   position: relative;
   i {
@@ -18,6 +38,14 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
       right: 2px;
     }
   }
+}
+
+.p-card-content {
+  padding: 0;
+}
+
+.p-breadcrumb-list {
+  margin-bottom: 0 !important;
 }
 
 .p-fileupload {
@@ -38,6 +66,16 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
   }
   .p-fileupload-file-badge {
     display: none;
+  }
+}
+
+// Datatable
+.p-datatable {
+  border-radius: 10px;
+  box-shadow: 0 0 0 0 0;
+  .p-datatable-header {
+    background-color: transparent;
+    border: 0;
   }
 }
 

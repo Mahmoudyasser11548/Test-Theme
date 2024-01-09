@@ -1,23 +1,23 @@
-import React from "react"
-import { Mail, Home } from "react-feather"
+import React from "react";
+import { Mail, Home } from "react-feather";
 
 export default [
   {
     id: "home",
     title: "Home",
     icon: <Home size={20} />,
-    navLink: "/home"
+    navLink: "/home",
   },
   {
     id: "secondPage",
     title: "Second Page",
     icon: <Mail size={20} />,
-    navLink: "/second-page"
+    navLink: "/second-page",
   },
   {
-    id: "rules",
-    title: "Rules",
+    id: "sample",
+    title: "Sample",
     icon: <Mail size={20} />,
-    navLink: "/rules"
-  }
-]
+    navLink: "/sample",
+  },
+];

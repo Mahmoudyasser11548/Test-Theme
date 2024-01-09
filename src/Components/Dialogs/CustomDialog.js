@@ -55,6 +55,7 @@ const CustomDialog = ({
           showFooter && (
             <div>
               <Button
+                className="rounded me-1"
                 label={<Trans id={closeButtonTitle} />}
                 icon="pi pi-times"
                 onClick={close}
@@ -62,6 +63,7 @@ const CustomDialog = ({
               />
               {showConfirmButton && confirmButtonTitle && (
                 <SubmitButton
+                  className="rounded"
                   loading={loading}
                   label={<Trans id={confirmButtonTitle} />}
                   onClick={confirmHandler}

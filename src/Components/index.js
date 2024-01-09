@@ -24,3 +24,7 @@ export { default as ToastAlert } from "./customs/Toast";
 // Dialogs
 export { default as CustomDialog } from "./Dialogs/CustomDialog";
 export { default as PopupDialog } from "./Dialogs/PopupDialog";
+
+// Cards
+export { default as PrimaryCard } from "./Cards/PrimaryCard";
+export { default as SecondaryCard } from "./Cards/SecondaryCard";

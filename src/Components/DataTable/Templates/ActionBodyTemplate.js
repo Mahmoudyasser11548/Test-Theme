@@ -1,8 +1,12 @@
 import { Button } from "primereact/button";
-import React from "react";
+import React, { useRef } from "react";
+import PopupDialog from "../../Dialogs/PopupDialog";
 
 const ActionBodyTemplate = ({
   rowData,
+  showPopup,
+  onHidePopup,
+  confirmHandler,
   // editPermission,
   // deletePermission,
   editHandler,
@@ -10,6 +14,8 @@ const ActionBodyTemplate = ({
   hideDelete = false,
   hideEdit = false,
 }) => {
+  const target = useRef(null);
+
   return (
     <React.Fragment>
       {!hideEdit && (
@@ -21,13 +27,22 @@ const ActionBodyTemplate = ({
         />
       )}
       {!hideDelete && (
-        <Button
-          icon="pi pi-trash"
-          outlined
-          severity="danger"
-          className="rounded-pill"
-          onClick={() => deleteHandler(rowData)}
-        />
+        <>
+          <PopupDialog
+            target={target.current}
+            show={showPopup}
+            onHide={onHidePopup}
+            confirmHandler={confirmHandler}
+          />
+          <Button
+            ref={target}
+            icon="pi pi-trash"
+            outlined
+            severity="danger"
+            className="rounded-pill"
+            onClick={() => deleteHandler(rowData)}
+          />
+        </>
       )}
     </React.Fragment>
   );

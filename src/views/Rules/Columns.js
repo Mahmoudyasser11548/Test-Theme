@@ -66,8 +66,12 @@ const Columns = (editHandler, deleteHandler) => {
       filterType: "date",
       filter: true,
     },
-    { field: "status", header: "Status", body: statusBody },
-    { field: "acion", body: actionBody },
+    {
+      field: "status",
+      header: "Status",
+      body: statusBody,
+    },
+    { field: "action", style: { width: "8rem" }, body: actionBody },
   ];
 };
 

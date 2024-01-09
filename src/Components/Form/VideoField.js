@@ -110,7 +110,7 @@ const VideoField = ({
         accept="video/*"
         maxFileSize={maxFileSize}
         emptyTemplate={
-          <p className="m-0">Drag and drop files to here to upload.</p>
+          <p className="m-0">Drag and drop Video to here to upload.</p>
         }
         multiple={multiple}
         onSelect={onVideoSelect}
