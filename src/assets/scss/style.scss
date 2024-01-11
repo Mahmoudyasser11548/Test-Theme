@@ -69,6 +69,18 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
   }
 }
 
+.p-datepicker-trigger {
+  border-radius: 0px 5px 5px 0;
+}
+
+.p-dropdown-items {
+  padding: 0;
+  margin-bottom: 0;
+}
+.p-multiselect-items {
+  padding: 0;
+  margin-bottom: 0;
+}
 // Datatable
 .p-datatable {
   border-radius: 10px;
@@ -78,10 +90,18 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     border: 0;
   }
 }
+// Password Field
+.p-password {
+  width: 100%;
+  .p-inputtext {
+    width: 100%;
+  }
+}
 
 // phone field
 .react-tel-input {
   .form-control {
+    width: 350px !important;
     padding: 10.5px 14px 10.5px 58px !important;
   }
 }

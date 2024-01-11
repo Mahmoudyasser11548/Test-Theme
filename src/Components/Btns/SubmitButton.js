@@ -4,6 +4,7 @@ import React from "react";
 const SubmitButton = ({ label = "Submit", loading = false, ...props }) => {
   return (
     <Button
+      className="rounded"
       type="submit"
       label={label}
       icon="pi pi-check"

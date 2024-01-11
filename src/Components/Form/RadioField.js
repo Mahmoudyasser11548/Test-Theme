@@ -10,7 +10,7 @@ const RadioField = ({ options, ...props }) => {
     <Fragment>
       {options.map((option) => (
         <div key={option.value} className="p-col">
-          <div className="p-field-radiobutton">
+          <div className="p-field-radiobutton mb-1">
             <RadioButton
               className={classNames({ "p-invalid": error && touched })}
               id={field.name}

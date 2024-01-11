@@ -8,6 +8,7 @@ import { FileUpload } from "primereact/fileupload";
 import { Tooltip } from "primereact/tooltip";
 import { useField, useFormikContext } from "formik"; // Import Formik hooks
 import { useRef } from "react";
+import classNames from "classnames";
 
 const VideoField = ({
   name,
@@ -24,7 +25,7 @@ const VideoField = ({
   const fileUploadRef = useRef(null);
   const [field, meta] = useField(name);
 
-  const { error } = meta;
+  const { touched, error } = meta;
   const { value } = field;
   const { base64, url, readUrl } = value;
 
@@ -100,11 +101,16 @@ const VideoField = ({
     <div>
       <Toast ref={toast}></Toast>
 
-      <Tooltip target=".custom-choose-btn" position="bottom" />
+      <Tooltip
+        target=".custom-choose-btn"
+        content={"Add Video"}
+        position="bottom"
+      />
       <Tooltip target=".custom-cancel-btn" content="Clear" position="bottom" />
 
       <FileUpload
         ref={fileUploadRef}
+        className={classNames({ "p-invalid": error && touched })}
         {...props}
         url={videoValue}
         accept="video/*"

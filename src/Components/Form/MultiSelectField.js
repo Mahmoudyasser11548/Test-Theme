@@ -39,9 +39,7 @@ function MultiSelectField({ label, options, keyValue, title, ...props }) {
         }}
         {...props}
       />
-      {error && touched && (
-        <FormFeedback className="p-error">{error}</FormFeedback>
-      )}
+      {error && touched && <span className="p-error">{error}</span>}
     </div>
   );
 }

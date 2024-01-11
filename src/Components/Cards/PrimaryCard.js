@@ -1,10 +1,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-confusing-arrow */
 import React from "react";
-import { BreadCrumb } from "primereact/breadcrumb";
-import { Panel } from "primereact/panel";
 import { Card } from "primereact/card";
-import { Divider } from "primereact/divider";
 import { Link } from "react-router-dom";
 import { Trans } from "@lingui/react";
 
@@ -49,7 +46,7 @@ const Header = ({ breadCrumbs = [], title = "" }) => {
 const Filter = ({ addButton, listCount = "" }) => {
   return (
     <div>
-      <div className="custom d-flex justify-content-between align-items-center py-1">
+      <div className="custom-card-header d-flex justify-content-between align-items-center py-1">
         <div className="list-count px-1">
           <span>{listCount}</span>
         </div>

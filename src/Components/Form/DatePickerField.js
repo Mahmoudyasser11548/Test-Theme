@@ -15,7 +15,7 @@ const DatePickerField = ({
   const { touched, error } = meta;
 
   return (
-    <div className="p-field d-flex flex-column">
+    <div className="p-field d-flex flex-column mb-1">
       <label htmlFor={field.name}>{label}</label>
       <Calendar
         id={props.id || props.name}
@@ -30,9 +30,7 @@ const DatePickerField = ({
         }}
         {...props}
       />
-      {touched && error && (
-        <FormFeedback className="p-error">{error}</FormFeedback>
-      )}
+      {touched && error && <span className="p-error">{error}</span>}
     </div>
   );
 };

@@ -24,7 +24,7 @@ const CheckboxField = ({ options, ...props }) => {
   return (
     <div className="p-formgroup-inline">
       {options.map((option) => (
-        <div key={option.value} className="p-field-checkbox">
+        <div key={option.value} className="p-field-checkbox mb-1">
           <Checkbox
             id={`${field.name}_${option.value}`} // Unique id for each checkbox
             {...field}

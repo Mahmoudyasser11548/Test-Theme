@@ -11,7 +11,7 @@ function PhoneField({ ...props }) {
   const { touched, error } = meta;
 
   return (
-    <div>
+    <div className="mb-1">
       <PhoneInput
         containerClass={classNames({ "p-invalid": error && touched })}
         country="eg"
@@ -25,7 +25,7 @@ function PhoneField({ ...props }) {
         {...props}
         {...field}
       />
-      {error && touched && <FormFeedback>{error}</FormFeedback>}
+      {error && touched && <span className="p-error">{error}</span>}
     </div>
   );
 }

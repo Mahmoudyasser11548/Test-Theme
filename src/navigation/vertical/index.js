@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail, Home } from "react-feather";
+import { Mail, Home, Chrome } from "react-feather";
 
 export default [
   {
@@ -17,7 +17,7 @@ export default [
   {
     id: "sample",
     title: "Sample",
-    icon: <Mail size={20} />,
-    navLink: "/sample",
+    icon: <Chrome size={20} />,
+    navLink: "/sample/list",
   },
 ];

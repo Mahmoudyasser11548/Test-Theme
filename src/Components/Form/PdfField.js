@@ -8,6 +8,7 @@ import { FileUpload } from "primereact/fileupload";
 import { Tooltip } from "primereact/tooltip";
 import { useField, useFormikContext } from "formik"; // Import Formik hooks
 import { useRef } from "react";
+import classNames from "classnames";
 
 const PdfField = ({
   name,
@@ -22,7 +23,7 @@ const PdfField = ({
   const fileUploadRef = useRef(null);
   const [field, meta] = useField(name);
 
-  const { error } = meta;
+  const { touched, error } = meta;
   const { value } = field;
   const { base64, url, readUrl } = value;
 
@@ -96,7 +97,12 @@ const PdfField = ({
     <div>
       <Toast ref={toast}></Toast>
 
-      <Tooltip id="choose" target=".custom-choose-btn" position="bottom" />
+      <Tooltip
+        id="choose"
+        content={"Add PDF"}
+        target=".custom-choose-btn"
+        position="bottom"
+      />
       <Tooltip
         id="cancel"
         target=".custom-cancel-btn"
@@ -106,6 +112,7 @@ const PdfField = ({
 
       <FileUpload
         ref={fileUploadRef}
+        className={classNames({ "p-invalid": error && touched })}
         {...props}
         url={pdfValue}
         accept=".pdf"

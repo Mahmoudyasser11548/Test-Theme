@@ -36,7 +36,7 @@ function SelectField({
   };
 
   return (
-    <div className="p-field d-flex flex-column">
+    <div className="p-field d-flex flex-column mb-1">
       {label && <label htmlFor={field.name}>{label}</label>}
       <Dropdown
         value={selectedOption}
@@ -57,9 +57,7 @@ function SelectField({
         {...props}
         {...fieldProps}
       />
-      {error && touched && (
-        <FormFeedback className="p-error">{error}</FormFeedback>
-      )}
+      {error && touched && <span className="p-error">{error}</span>}
     </div>
   );
 }

@@ -14,7 +14,7 @@ const PasswordField = ({ label, ...props }) => {
   };
 
   return (
-    <div>
+    <div className="mb-1">
       {label && <label htmlFor={field.name}>{label}</label>}
       <div>
         <Password
@@ -26,9 +26,7 @@ const PasswordField = ({ label, ...props }) => {
           feedback={false}
           toggleMask
         />
-        {touched && error && (
-          <FormFeedback className="p-error">{error}</FormFeedback>
-        )}
+        {touched && error && <span className="p-error">{error}</span>}
       </div>
     </div>
   );

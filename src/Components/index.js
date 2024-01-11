@@ -14,6 +14,7 @@ export { default as ImageField } from "./Form/ImageField";
 export { default as VideoField } from "./Form/VideoField";
 export { default as PdfField } from "./Form/PdfField";
 export { default as SwitchField } from "./Form/SwitchField";
+export { default as ColorPickerField } from "./Form/ColorPickerField";
 
 // Btns
 export { default as SubmitButton } from "./Btns/SubmitButton";

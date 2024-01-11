@@ -8,7 +8,7 @@ const InputField = ({ label, placeholder = "enter value", ...props }) => {
   const [field, meta] = useField(props);
   const { touched, error } = meta;
   return (
-    <div className="p-field d-flex flex-column">
+    <div className="p-field d-flex flex-column mb-1">
       {label && <label htmlFor={field.name}>{label}</label>}
 
       <InputText
@@ -17,9 +17,7 @@ const InputField = ({ label, placeholder = "enter value", ...props }) => {
         {...field}
         {...props}
       />
-      {touched && error ? (
-        <FormFeedback className="p-error">{error}</FormFeedback>
-      ) : null}
+      {touched && error ? <span className="p-error">{error}</span> : null}
     </div>
   );
 };

@@ -2,6 +2,9 @@
 import React, { Fragment, lazy } from "react";
 import { Navigate } from "react-router-dom";
 
+// Routes
+import Sample from "@views/Sample";
+
 // ** Layouts
 import BlankLayout from "@layouts/BlankLayout";
 import VerticalLayout from "@src/layouts/VerticalLayout";
@@ -32,7 +35,6 @@ const Login = lazy(() => import("../../views/Login"));
 const Register = lazy(() => import("../../views/Register"));
 const ForgotPassword = lazy(() => import("../../views/ForgotPassword"));
 const Error = lazy(() => import("../../views/Error"));
-const Rules = lazy(() => import("../../views/Rules/Rules"));
 
 // ** Merge Routes
 const Routes = [
@@ -48,10 +50,6 @@ const Routes = [
   {
     path: "/second-page",
     element: <SecondPage />,
-  },
-  {
-    path: "/sample",
-    element: <Rules />,
   },
   {
     path: "/login",
@@ -81,6 +79,7 @@ const Routes = [
       layout: "blank",
     },
   },
+  ...Sample,
 ];
 
 const getRouteMeta = (route) => {
