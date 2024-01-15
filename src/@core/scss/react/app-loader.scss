@@ -57,11 +57,12 @@
     }
   }
 }
-// .fallback-logo {
-//   position: absolute;
-//   left: calc(50% - 45px);
-//   top: 40%;
-// }
+.fallback-logo {
+  width: 200px;
+  // position: absolute;
+  // left: calc(50% - 45px);
+  // top: 40%;
+}
 
 @keyframes rotate {
   0% {

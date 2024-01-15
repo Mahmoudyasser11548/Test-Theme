@@ -6,12 +6,14 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/material.css";
 import { FormFeedback, Label } from "reactstrap";
 
-function PhoneField({ ...props }) {
+function PhoneField({ label, ...props }) {
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
 
   return (
     <div className="mb-1">
+      {label && <label htmlFor={field.name}>{label}</label>}
+
       <PhoneInput
         containerClass={classNames({ "p-invalid": error && touched })}
         country="eg"

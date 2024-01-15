@@ -1,5 +1,8 @@
+/* eslint-disable implicit-arrow-linebreak */
 // ** React Imports
 import { Fragment, useState, useRef } from "react";
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
 
 // ** Third Party Components
 import classnames from "classnames";
@@ -18,6 +21,7 @@ const Sidebar = (props) => {
   const [groupActive, setGroupActive] = useState([]);
   const [currentActiveGroup, setCurrentActiveGroup] = useState([]);
   const [activeItem, setActiveItem] = useState(null);
+  const [navItems, setNavItems] = useState([]);
 
   // ** Menu Hover State
   const [menuHover, setMenuHover] = useState(false);
@@ -43,6 +47,13 @@ const Sidebar = (props) => {
     }
   };
 
+  const filterNavItems = (value) => {
+    const allItems = [...menuData];
+
+    if (!value) setNavItems(allItems);
+    else setNavItems(allItems.filter((item) => item?.id?.includes(value)));
+  };
+
   return (
     <Fragment>
       <div
@@ -52,7 +63,7 @@ const Sidebar = (props) => {
             expanded: menuHover || menuCollapsed === false,
             "menu-light": skin !== "semi-dark" && skin !== "dark",
             "menu-dark": skin === "semi-dark" || skin === "dark",
-          }
+          },
         )}
         onMouseEnter={onMouseEnter}
         onMouseLeave={() => setMenuHover(false)}
@@ -75,9 +86,25 @@ const Sidebar = (props) => {
               options={{ wheelPropagation: false }}
               onScrollY={(container) => scrollMenu(container)}
             >
+              <div className="text-center mx-2 my-1">
+                <div className="p-inputgroup flex-1 search-menu">
+                  {!menuCollapsed && (
+                    <InputText
+                      placeholder={"Keyword"}
+                      onChange={(e) =>
+                        filterNavItems(e.target.value.toLowerCase())
+                      }
+                    />
+                  )}
+                  <Button
+                    icon="pi pi-search"
+                    className="p-button-warning btn-icon"
+                  />
+                </div>
+              </div>
               <ul className="navigation navigation-main">
                 <VerticalNavMenuItems
-                  items={menuData}
+                  items={navItems && navItems?.length > 0 ? navItems : menuData}
                   menuData={menuData}
                   menuHover={menuHover}
                   groupOpen={groupOpen}

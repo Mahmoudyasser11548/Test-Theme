@@ -44,6 +44,7 @@ const CustomDataTable = ({
 
   return (
     <DataTable
+      stripedRows
       dataKey={dataKey}
       className="p-datatable-sm"
       header={noHeader ? "" : header}

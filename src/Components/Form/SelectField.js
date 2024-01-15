@@ -40,7 +40,7 @@ function SelectField({
       {label && <label htmlFor={field.name}>{label}</label>}
       <Dropdown
         value={selectedOption}
-        className={classNames({ "p-invalid": error && touched }, "p-dropdown")}
+        className={classNames({ "p-invalid": error && touched })}
         options={options}
         onChange={(e) => {
           helpers.setTouched(true);

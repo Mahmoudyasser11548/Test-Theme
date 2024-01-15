@@ -16,10 +16,10 @@ const SecondaryCard = ({
     <>
       <Card
         header={
-          <div className="px-2 py-2 border d-flex align-items-center">
+          <div className="px-2 py-2 border d-flex align-items-center custom-card-header">
             {showBackButton && (
               <Button
-                className="rounded-pill "
+                className="rounded-pill btn-back"
                 icon="pi pi-arrow-circle-left"
                 tooltip="Back"
                 onClick={() => {

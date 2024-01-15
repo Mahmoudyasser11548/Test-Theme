@@ -39,7 +39,7 @@ const ActionBodyTemplate = ({
             icon="pi pi-trash"
             outlined
             severity="danger"
-            className="rounded-pill"
+            className="rounded-pill delete-btn"
             onClick={() => deleteHandler(rowData)}
           />
         </>

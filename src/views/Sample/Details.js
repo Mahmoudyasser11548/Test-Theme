@@ -133,7 +133,7 @@ const Details = () => {
                           md="12"
                           className="d-flex align-items-center"
                         >
-                          <PhoneField name="phone" />
+                          <PhoneField name="phone" label="Phone" />
                         </Col>
                       </Row>
                     </Col>
