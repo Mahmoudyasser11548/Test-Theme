@@ -74,6 +74,9 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
       0 1px 2px 0 black;
   }
 }
+.btn-scroll {
+  border-radius: 5px !important;
+}
 
 .btn-back {
   border-radius: 50% !important ;
@@ -120,6 +123,13 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
       border-radius: 10px;
       padding: 2px 5px;
       font-size: 12px;
+    }
+    .p-button {
+      background-color: transparent;
+      border: 0px;
+      &:focus {
+        box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #ffd0ce, 0 1px 2px 0 black !important;
+      }
     }
   }
   .p-fileupload-file-badge {
@@ -195,19 +205,27 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
   &:not(.delete-btn) {
     border-color: #8f48d2;
   }
-  &:focus {
+  &:focus:not(.delete-btn, .custom-cancel-btn) {
     box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #dab6fc, 0 1px 2px 0 black;
   }
   &.p-button-outlined {
     background: transparent;
   }
-  &.p-button-outlined:not(.delete-btn) {
+  &.p-button-outlined:not(.delete-btn, .custom-cancel-btn) {
     border-color: #8f48d2;
     background: transparent;
     color: #8f48d2;
     &:focus {
       box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #dab6fc, 0 1px 2px 0 black;
     }
+  }
+}
+
+.custom-cancel-btn {
+  color: #ea5455 !important;
+  border-color: #ea5455 !important;
+  &:focus {
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #ffd0ce, 0 1px 2px 0 black !important;
   }
 }
 

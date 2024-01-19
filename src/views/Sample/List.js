@@ -1,65 +1,36 @@
 /* eslint-disable no-unused-expressions */
-import React, { useState } from "react";
-import { CustomDataTable, CustomDialog, PrimaryCard } from "../../Components";
+import React, { useEffect, useState } from "react";
+import {
+  CustomDataTable,
+  CustomDialog,
+  PageState,
+  PrimaryCard,
+} from "../../Components";
 import Columns from "./Columns";
 import { Trans } from "@lingui/react";
 import { Button } from "primereact/button";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getSamples, setSamples } from "@redux/sample";
 
-const products = [
-  {
-    id: 1,
-    code: "986534",
-    name: "Laptop",
-    category: "Devices",
-    quantity: "2",
-    status: "INSTOCK",
-    date: "10/11/2024",
-  },
-  {
-    id: 2,
-    code: "243567",
-    name: "Face Wash",
-    category: "Cosmetics",
-    quantity: "10",
-    status: "INSTOCK",
-    date: "2024-1-2",
-  },
-  {
-    id: 3,
-    code: "768576",
-    name: "Mercedes Car",
-    category: "Automotive",
-    quantity: "1",
-    status: "INSTOCK",
-    date: "2024-1-2",
-  },
-  {
-    id: 4,
-    code: "435982",
-    name: "Meat",
-    category: "Foods",
-    quantity: "2",
-    status: "INSTOCK",
-    date: "2024-1-2",
-  },
-  {
-    id: 5,
-    code: "123244",
-    name: "Chiken",
-    category: "Foods",
-    quantity: "5",
-    status: "INSTOCK",
-    date: "2024-1-2",
-  },
-];
+const Sample = () => {
+  const { samples } = useSelector((state) => state.sample);
+  const dispatch = useDispatch();
 
-const List = () => {
   const [product, setProduct] = useState({});
   const naviagte = useNavigate();
+
   const deleteHandler = () => {};
   const editHandler = () => {};
   const confirmDeleteBanar = () => {};
+
+  useEffect(() => {
+    dispatch(getSamples());
+
+    return () => {
+      dispatch(setSamples());
+    };
+  }, [samples]);
 
   return (
     <>
@@ -80,12 +51,12 @@ const List = () => {
         }
         body={
           <CustomDataTable
-            data={products}
+            data={samples}
             columns={Columns(editHandler, deleteHandler)}
             resizableColumns={false}
             noHeader={false}
             selection={{
-              mode: "single",
+              mode: "multiple",
               checked: true,
               selected: product,
               handleOnChangeSelect: (e) => setProduct(e),
@@ -111,6 +82,10 @@ const List = () => {
       />
     </>
   );
+};
+
+const List = () => {
+  return <PageState Page={Sample} name="SamplePage" />;
 };
 
 export default List;

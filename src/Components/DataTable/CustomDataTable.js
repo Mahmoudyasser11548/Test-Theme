@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-
+/* eslint-disable no-mixed-operators */
+/* eslint-disable no-unused-expressions */
+import React from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import Header from "./Header";
 import { Trans } from "@lingui/react";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 const CustomDataTable = ({
   dataKey = "id",
+  filters,
+  setFilters,
   data,
   columns,
   noHeader = false,
@@ -16,29 +20,34 @@ const CustomDataTable = ({
   loading,
   selection = {},
 }) => {
-  const [globalFilterValue, setGlobalFilterValue] = useState("");
-
   const clearFilters = () => {
-    // Implement logic to clear filters
-    // Clear filter values, reset state, etc.
+    const clearedFilters = Object.keys(filters).reduce((acc, key) => {
+      acc[key] = null;
+      return acc;
+    }, {});
+
+    setFilters && setFilters(clearedFilters);
   };
 
-  const handleGlobalFilterChange = (e) => {
-    setGlobalFilterValue(e.target.value);
-    // Implement logic to handle global filter change
-    // Filter data based on 'e.target.value'
+  const handlePage = (event) => {
+    setFilters &&
+      setFilters({ ...filters, page: event.first / event.rows + 1 });
   };
 
-  const handleSort = () => {
-    // Implement logic to handle sorting
-    // Update state for sorting configuration or trigger sorting function
+  const handleSort = (event) => {
+    setFilters &&
+      setFilters({
+        ...filters,
+        sortBy: event.sortField,
+        sortOrder: event.sortOrder === 1 ? "asc" : "desc",
+      });
   };
 
   const header = (
     <Header
       clearFilters={clearFilters}
-      onGlobalFilterChange={handleGlobalFilterChange}
-      globalFilterValue={globalFilterValue}
+      filters={filters}
+      setFilters={setFilters}
     />
   );
 
@@ -48,25 +57,30 @@ const CustomDataTable = ({
       dataKey={dataKey}
       className="p-datatable-sm"
       header={noHeader ? "" : header}
+      filters={filters}
       value={data}
       filterDisplay="menu" // row, menu
       tableStyle={{ minWidth: "50rem" }}
       removableSort
+      sortField={filters.sortBy}
+      sortOrder={filters.sortOrder === "asc" ? 1 : -1}
       sortMode="multiple"
       onSort={handleSort}
       paginator
+      onPage={handlePage}
+      first={(filters.page - 1) * (filters.pageSize || 10)}
       rows={metadata?.pageSize || 10}
-      rowsPerPageOptions={[5, 10, 25, 50]}
       totalRecords={metadata?.totalItemCount || 0}
       lazy
       resizableColumns={resizableColumns}
       columnResizeMode={resizableColumns && "fit"} // fit, expand, minimal
-      loading={loading || false}
-      emptyMessage={<Trans id={emptyMessage} />}
+      loading={loading && <ProgressSpinner />}
+      emptyMessage={<Trans id={emptyMessage || "No Data to Display"} />}
       selectionMode={selection?.mode} // single, multiple
       selection={selection?.selected}
       onSelectionChange={(e) => selection?.handleOnChangeSelect(e.value)}
       checked={selection?.checked}
+      style={{ cursor: "pointer" }}
     >
       {Object.keys(selection).length !== 0 ? (
         <Column

@@ -103,7 +103,7 @@ const VideoField = ({
 
       <Tooltip
         target=".custom-choose-btn"
-        content={"Add Video"}
+        content="Add Video"
         position="bottom"
       />
       <Tooltip target=".custom-cancel-btn" content="Clear" position="bottom" />

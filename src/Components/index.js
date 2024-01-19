@@ -21,6 +21,7 @@ export { default as SubmitButton } from "./Btns/SubmitButton";
 
 // Customs
 export { default as ToastAlert } from "./customs/Toast";
+export { default as PageState } from "./customs/PageState";
 
 // Dialogs
 export { default as CustomDialog } from "./Dialogs/CustomDialog";

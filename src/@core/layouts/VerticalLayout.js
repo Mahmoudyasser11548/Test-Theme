@@ -145,7 +145,7 @@ const VerticalLayout = (props) => {
           "vertical-overlay-menu": windowWidth < 1200,
           "menu-hide": !menuVisibility && windowWidth < 1200,
           "menu-open": menuVisibility && windowWidth < 1200,
-        }
+        },
       )}
       {...(isHidden ? { "data-col": "1-column" } : {})}
     >
@@ -170,7 +170,7 @@ const VerticalLayout = (props) => {
         className={classnames(
           `header-navbar navbar align-items-center ${
             navbarClasses[navbarType] || "floating-nav"
-          } navbar-shadow`
+          } navbar-shadow`,
         )}
       >
         <div className="navbar-container d-flex content">
@@ -225,7 +225,7 @@ const VerticalLayout = (props) => {
           `footer footer-light ${footerClasses[footerType] || "footer-static"}`,
           {
             "d-none": footerType === "hidden",
-          }
+          },
         )}
       >
         {footer ? (
@@ -241,7 +241,7 @@ const VerticalLayout = (props) => {
       {themeConfig.layout.scrollTop === true ? (
         <div className="scroll-to-top">
           <ScrollToTop showOffset={300} className="scroll-top d-block">
-            <Button className="btn-icon" color="primary">
+            <Button className="btn-icon btn-scroll" color="primary">
               <ArrowUp size={14} />
             </Button>
           </ScrollToTop>
