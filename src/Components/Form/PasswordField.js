@@ -24,6 +24,7 @@ const PasswordField = ({ label, ...props }) => {
           value={value || ""}
           onChange={handlePasswordChange}
           feedback={false}
+          placeholder="password"
           toggleMask
         />
         {touched && error && <span className="p-error">{error}</span>}

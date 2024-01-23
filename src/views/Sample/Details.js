@@ -15,7 +15,7 @@ import {
   SubmitButton,
   SwitchField,
   VideoField,
-} from "../../Components";
+} from "@customcomponents";
 import { Trans } from "@lingui/react";
 import useFile from "@hooks/useFile";
 import { Form, Formik } from "formik";

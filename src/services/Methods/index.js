@@ -9,7 +9,7 @@ export const createThunk = (name, url, method) =>
     async (payload, { rejectWithValue }) => {
       try {
         const response = await fetch(
-          `${url}/${
+          `${API_BASE_URL}/${url}/${
             method === "put" ? payload.id : method === "delete" ? payload : ""
           }`,
           {

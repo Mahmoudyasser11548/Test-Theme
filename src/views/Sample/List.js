@@ -5,7 +5,7 @@ import {
   CustomDialog,
   PageState,
   PrimaryCard,
-} from "../../Components";
+} from "@customcomponents";
 import Columns from "./Columns";
 import { Trans } from "@lingui/react";
 import { Button } from "primereact/button";

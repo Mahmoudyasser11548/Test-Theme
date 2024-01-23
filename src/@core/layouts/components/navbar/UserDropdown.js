@@ -14,6 +14,7 @@ import {
   CreditCard,
   HelpCircle,
   Power,
+  LogOut,
 } from "react-feather";
 
 // ** Reactstrap Imports
@@ -26,8 +27,12 @@ import {
 
 // ** Default Avatar Image
 import defaultAvatar from "@src/assets/images/portrait/small/avatar-s-11.jpg";
-
+import { useDispatch } from "react-redux";
+import { logout } from "@redux/auth";
+import { Trans } from "@lingui/react";
 const UserDropdown = () => {
+  const dispatch = useDispatch();
+
   return (
     <UncontrolledDropdown tag="li" className="dropdown-user nav-item">
       <DropdownToggle
@@ -81,9 +86,11 @@ const UserDropdown = () => {
           <HelpCircle size={14} className="me-75" />
           <span className="align-middle">FAQ</span>
         </DropdownItem>
-        <DropdownItem tag={Link} to="/login">
-          <Power size={14} className="me-75" />
-          <span className="align-middle">Logout</span>
+        <DropdownItem tag={Link} to="/login" onClick={() => dispatch(logout())}>
+          <LogOut size={14} className="me-75" />
+          <span className="align-middle">
+            <Trans id="Logout" />
+          </span>
         </DropdownItem>
       </DropdownMenu>
     </UncontrolledDropdown>

@@ -95,6 +95,10 @@ export default () => {
         { find: "@redux", replacement: path.resolve(__dirname, "src/redux") },
         { find: "@views", replacement: path.resolve(__dirname, "src/views") },
         {
+          find: "@customcomponents",
+          replacement: path.resolve(__dirname, "src/Components"),
+        },
+        {
           find: "@assets",
           replacement: path.resolve(__dirname, "src/@core/assets"),
         },
