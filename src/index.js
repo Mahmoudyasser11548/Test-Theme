@@ -22,7 +22,7 @@ import Spinner from "./@core/components/spinner/Fallback-spinner";
 
 // primereact stylesheets
 import "primeicons/primeicons.css";
-import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/themes/viva-light/theme.css";
 import "primereact/resources/primereact.css";
 
 // ** Ripple Button

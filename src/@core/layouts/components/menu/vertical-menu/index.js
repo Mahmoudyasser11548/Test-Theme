@@ -99,7 +99,7 @@ const Sidebar = (props) => {
                   )}
                   <Button
                     icon="pi pi-search"
-                    className="p-button-warning btn-icon"
+                    className="p-button-warning btn-icon btn-search"
                   />
                 </div>
               </div>

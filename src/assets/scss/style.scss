@@ -82,6 +82,12 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
   border-radius: 50% !important ;
 }
 
+.btn-search {
+  &:focus {
+    box-shadow: 0 0 0 0 transparent !important;
+  }
+}
+
 .submit-btn {
   background-color: #8f48d2;
   border-color: #8f48d2;
