@@ -92,7 +92,6 @@ export default () => {
           find: "@hooks",
           replacement: path.resolve(__dirname, "src/utility/hooks"),
         },
-        { find: "@redux", replacement: path.resolve(__dirname, "src/redux") },
         { find: "@views", replacement: path.resolve(__dirname, "src/views") },
         {
           find: "@customcomponents",

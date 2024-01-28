@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { jwtDecode } from "jwt-decode";
-import { createThunk } from "../services/Methods";
+import { createThunk } from "../../services/Methods";
 
 export const login = createThunk("login", "auth/login", "post");
 

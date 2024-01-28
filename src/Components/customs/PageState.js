@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import configs from "@configs";
-import { setPageState } from "@redux/pages";
+import { setPageState } from "@store/AppSettings/pages";
 
 const PageState = ({ Page, name, params }) => {
   const dispatch = useDispatch();

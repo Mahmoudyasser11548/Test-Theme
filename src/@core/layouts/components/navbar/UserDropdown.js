@@ -28,7 +28,7 @@ import {
 // ** Default Avatar Image
 import defaultAvatar from "@src/assets/images/portrait/small/avatar-s-11.jpg";
 import { useDispatch } from "react-redux";
-import { logout } from "@redux/auth";
+import { logout } from "@store/Appsettings/auth";
 import { Trans } from "@lingui/react";
 const UserDropdown = () => {
   const dispatch = useDispatch();
@@ -42,8 +42,17 @@ const UserDropdown = () => {
         onClick={(e) => e.preventDefault()}
       >
         <div className="user-nav d-sm-flex d-none">
-          <span className="user-name fw-bold">John Doe</span>
-          <span className="user-status">Admin</span>
+          <span className="user-name fw-bold">
+            John Doe
+            {/* {(userData && userData["fullName"]) || "John Doe"} */}
+          </span>
+          <span className="user-status">
+            Admin
+            {/* {(userData &&
+              !inRole(Roles.SuperAdmin) &&
+              JSON.parse(roles)[0].split("-")[0]) ||
+              "Admin"} */}
+          </span>
         </div>
         <Avatar
           img={defaultAvatar}

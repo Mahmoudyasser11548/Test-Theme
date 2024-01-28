@@ -10,9 +10,9 @@ export const getBookmarks = createAsyncThunk(
     const response = await axios.get("/api/bookmarks/data");
     return {
       data: response.data.suggestions,
-      bookmarks: response.data.bookmarks
+      bookmarks: response.data.bookmarks,
     };
-  }
+  },
 );
 
 export const updateBookmarked = createAsyncThunk(
@@ -20,7 +20,7 @@ export const updateBookmarked = createAsyncThunk(
   async (id) => {
     await axios.post("/api/bookmarks/update", { id });
     return id;
-  }
+  },
 );
 
 export const layoutSlice = createSlice({
@@ -54,7 +54,7 @@ export const layoutSlice = createSlice({
 
         // ** Get index to add or remove bookmark from array
         const bookmarkIndex = state.bookmarks.findIndex(
-          (x) => x.id === action.payload
+          (x) => x.id === action.payload,
         );
 
         if (bookmarkIndex === -1) {

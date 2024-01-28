@@ -1,10 +1,10 @@
 // ** Reducers Imports
-import layout from "./layout";
-import navbar from "./navbar";
-import app from "./app";
-import sample from "./sample";
-import page from "./pages";
-import auth from "./auth";
+import layout from "./AppSettings/layout";
+import navbar from "./AppSettings/navbar";
+import app from "./AppSettings/app";
+import sample from "./Slices/sample";
+import page from "./AppSettings/pages";
+import auth from "./AppSettings/auth";
 
 const rootReducer = { navbar, layout, app, auth, sample, page };
 

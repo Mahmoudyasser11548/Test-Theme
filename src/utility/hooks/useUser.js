@@ -1,16 +1,16 @@
 //** React Imports
 import { useEffect, useState } from "react";
 // ** Store & Actions
-import { handleMenuHidden } from "@redux/layout";
+import { handleMenuHidden } from "@store/AppSettings/layout";
 import { useDispatch, useSelector } from "react-redux";
-import { Roles } from "src/configs/roles";
+import { Roles } from "@configs/roles";
 import { useNavbarType } from "./useNavbarType";
 
 export const useUser = () => {
   // ** Store Vars
   const dispatch = useDispatch();
   // eslint-disable-next-line no-unused-vars
-  const [navbarType, setNavbarType] = useNavbarType();
+  const { navbarType, setNavbarType } = useNavbarType();
   const { user } = useSelector((state) => state.auth);
   const [permissions, setPermissions] = useState([]);
   const [tenantId, setTenantId] = useState("");
@@ -39,7 +39,7 @@ export const useUser = () => {
 
     localStorage.setItem("navbarType", navType);
     setNavbarType(navType);
-  }, [roles]);
+  }, [roles, setNavbarType]);
 
   const isSuperAdmin = () => {
     return roles.includes("SuperAdmin");

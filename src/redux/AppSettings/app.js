@@ -3,8 +3,8 @@ import {
   DEFAULT_LOCALE,
   DEFAULT_DIRECTION,
   DEFAULT_CURRENCY,
-} from "./constant";
-import { locales } from "./SupportedLocales";
+} from "../constant";
+import { locales } from "../SupportedLocales";
 
 const initialState = {
   supportedLocales: locales,

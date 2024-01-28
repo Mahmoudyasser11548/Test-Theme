@@ -1,5 +1,5 @@
 // ** Store Imports
-import { handleFooterType } from "@store/layout";
+import { handleFooterType } from "@store/AppSettings/layout";
 import { useDispatch, useSelector } from "react-redux";
 
 export const useFooterType = () => {

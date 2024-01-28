@@ -2,8 +2,8 @@ import React, { createContext, useEffect, useState } from "react";
 import { i18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
 import { useDispatch } from "react-redux";
-import { locales } from "@redux/SupportedLocales";
-import { changeLocale } from "@redux/app";
+import { locales } from "@store/SupportedLocales";
+import { changeLocale } from "@store/AppSettings/app";
 // Context
 export const IntlContext = createContext();
 

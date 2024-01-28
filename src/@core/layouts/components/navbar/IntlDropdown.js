@@ -11,7 +11,7 @@ import {
 
 import { useRTL } from "@hooks/useRTL";
 import { IntlContext } from "../../../../utility/context/IntlProviderWrapper";
-import { locales } from "@redux/SupportedLocales";
+import { locales } from "@store/SupportedLocales";
 
 const IntlDropdown = () => {
   // ** Context

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createThunk } from "../services/Methods";
+import { createThunk } from "../../services/Methods";
 
 const createSample = createThunk(
   "sample",

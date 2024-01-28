@@ -28,7 +28,7 @@ import { useEffect } from "react";
 // ** React Imports
 import { useSkin } from "@hooks/useSkin";
 
-import { login } from "@redux/auth";
+import { login } from "@store/AppSettings/auth";
 
 const Login = () => {
   const navigate = useNavigate();

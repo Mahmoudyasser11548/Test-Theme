@@ -12,6 +12,7 @@ import HorizontalLayout from "@src/layouts/HorizontalLayout";
 import LayoutWrapper from "@src/@core/layouts/components/layout-wrapper";
 
 // ** Route Components
+// import PrivateRoute from "@components/routes/PrivateRoute";
 import PublicRoute from "@components/routes/PublicRoute";
 
 // ** Utils
@@ -35,6 +36,7 @@ const Login = lazy(() => import("../../views/Login"));
 const Register = lazy(() => import("../../views/Register"));
 const ForgotPassword = lazy(() => import("../../views/ForgotPassword"));
 const Error = lazy(() => import("../../views/Error"));
+const NotAuthorized = lazy(() => import("../../views/NotAuthorized"));
 
 // ** Merge Routes
 const Routes = [
@@ -73,7 +75,14 @@ const Routes = [
     },
   },
   {
-    path: "/error",
+    path: "/misc/not-authorized",
+    element: <NotAuthorized />,
+    meta: {
+      layout: "blank",
+    },
+  },
+  {
+    path: "*",
     element: <Error />,
     meta: {
       layout: "blank",
@@ -106,7 +115,6 @@ const MergeLayoutRoutes = (layout, defaultLayout) => {
           defaultLayout === layout)
       ) {
         const RouteTag = PublicRoute;
-
         // ** Check for public or private route
         if (route.meta) {
           route.meta.layout === "blank" ? (isBlank = true) : (isBlank = false);

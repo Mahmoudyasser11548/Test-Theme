@@ -8,7 +8,7 @@ import {
   handleMenuCollapsed,
   handleContentWidth,
   handleMenuHidden,
-} from "@store/layout";
+} from "@store/AppSettings/layout";
 
 // ** Third Party Components
 import classnames from "classnames";

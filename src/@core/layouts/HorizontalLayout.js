@@ -4,7 +4,10 @@ import { useState, useEffect } from "react";
 
 // ** Store & Actions
 import { useSelector, useDispatch } from "react-redux";
-import { handleMenuHidden, handleContentWidth } from "@store/layout";
+import {
+  handleMenuHidden,
+  handleContentWidth,
+} from "@store/AppSettings/layout";
 
 // ** Third Party Components
 import classnames from "classnames";

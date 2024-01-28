@@ -10,7 +10,7 @@ import {
   handleContentWidth,
   handleMenuCollapsed,
   handleMenuHidden,
-} from "@store/layout";
+} from "@store/AppSettings/layout";
 
 // ** ThemeConfig
 import themeConfig from "@configs/themeConfig";

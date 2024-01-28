@@ -11,7 +11,7 @@ import { Trans } from "@lingui/react";
 import { Button } from "primereact/button";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSamples, setSamples } from "@redux/sample";
+import { getSamples, setSamples } from "@store/sample";
 
 const Sample = () => {
   const { samples } = useSelector((state) => state.sample);

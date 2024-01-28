@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 // ** Store Imports
 import { useDispatch, useSelector } from "react-redux";
-import { handleLayout, handleLastLayout } from "@store/layout";
+import { handleLayout, handleLastLayout } from "@store/AppSettings/layout";
 
 export const useLayout = () => {
   // ** Hooks
@@ -48,6 +48,6 @@ export const useLayout = () => {
     layout: store.layout,
     setLayout,
     lastLayout: store.lastLayout,
-    setLastLayout
-  }
-}
+    setLastLayout,
+  };
+};

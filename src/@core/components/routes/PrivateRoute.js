@@ -1,40 +1,43 @@
-// ** React Imports
 import { Navigate } from "react-router-dom";
-import { useContext, Suspense } from "react";
-
-// ** Context Imports
-import { AbilityContext } from "@src/utility/context/Can";
-
-// ** Spinner Import
+import { useEffect, Suspense, useState } from "react";
 import Spinner from "../spinner/Loading-spinner";
+import { useUser } from "@hooks/useUser";
+import { isUserLoggedIn } from "@utils";
 
 const PrivateRoute = ({ children, route }) => {
-  // ** Hooks & Vars
-  const ability = useContext(AbilityContext);
-  const user = JSON.parse(localStorage.getItem("userData"));
+  const { can } = useUser();
+  const [redirectPath, setRedirectPath] = useState(null);
 
-  if (route) {
-    let action = null;
-    let resource = null;
-    let restrictedRoute = false;
+  useEffect(() => {
+    if (route) {
+      // let action = null;
+      // let resource = null;
+      let permission = false;
 
-    if (route.meta) {
-      action = route.meta.action;
-      resource = route.meta.resource;
-      restrictedRoute = route.meta.restricted;
+      if (route.meta) {
+        // action = route.meta.action;
+        // resource = route.meta.resource;
+        permission = route.meta?.permission || null;
+      }
+
+      if (
+        (!isUserLoggedIn() && route.meta === undefined) ||
+        (!isUserLoggedIn() &&
+          route.meta &&
+          !route.meta.authRoute &&
+          !route.meta.publicRoute)
+      ) {
+        setRedirectPath("/login");
+      } else if (route.meta && route.meta.authRoute && isUserLoggedIn()) {
+        setRedirectPath("/");
+      } else if (isUserLoggedIn() && permission && !can(permission)) {
+        setRedirectPath("/misc/not-authorized");
+      }
     }
-    if (!user) {
-      return <Navigate to="/login" />;
-    }
-    if (user && restrictedRoute) {
-      return <Navigate to="/" />;
-    }
-    if (user && restrictedRoute && user.role === "client") {
-      return <Navigate to="/access-control" />;
-    }
-    if (user && !ability.can(action || "read", resource)) {
-      return <Navigate to="/misc/not-authorized" replace />;
-    }
+  }, [route]);
+
+  if (redirectPath) {
+    return <Navigate to={redirectPath} />;
   }
 
   return (

@@ -4,7 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { ThemeContext } from "./src/utility/context/ThemeColors";
 import { BrowserRouter } from "react-router-dom";
-import rootReducer from "@redux/rootReducer";
+import rootReducer from "@store/rootReducer";
 
 export function renderWithProviders(
   ui,
