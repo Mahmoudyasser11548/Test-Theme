@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import React, { lazy } from "react";
 
 const List = lazy(() => import("@views/Sample/List"));
 const Details = lazy(() => import("@views/Sample/Details"));

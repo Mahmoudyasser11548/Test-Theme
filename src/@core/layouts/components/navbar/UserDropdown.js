@@ -13,7 +13,6 @@ import {
   Settings,
   CreditCard,
   HelpCircle,
-  Power,
   LogOut,
 } from "react-feather";
 
@@ -30,8 +29,14 @@ import defaultAvatar from "@src/assets/images/portrait/small/avatar-s-11.jpg";
 import { useDispatch } from "react-redux";
 import { logout } from "@store/Appsettings/auth";
 import { Trans } from "@lingui/react";
+import { getUserData } from "@utils";
+import { useUser } from "@hooks/useUser";
+import { Roles } from "@configs/roles";
+
 const UserDropdown = () => {
   const dispatch = useDispatch();
+  const userData = getUserData();
+  const { inRole } = useUser();
 
   return (
     <UncontrolledDropdown tag="li" className="dropdown-user nav-item">
@@ -43,15 +48,15 @@ const UserDropdown = () => {
       >
         <div className="user-nav d-sm-flex d-none">
           <span className="user-name fw-bold">
-            John Doe
-            {/* {(userData && userData["fullName"]) || "John Doe"} */}
+            {/* John Doe */}
+            {(userData && userData["fullName"]) || "John Doe"}
           </span>
           <span className="user-status">
-            Admin
-            {/* {(userData &&
+            {/* Admin */}
+            {(userData &&
               !inRole(Roles.SuperAdmin) &&
-              JSON.parse(roles)[0].split("-")[0]) ||
-              "Admin"} */}
+              userData.role.slice(2).split("-")[0]) ||
+              "Admin"}
           </span>
         </div>
         <Avatar

@@ -1,7 +1,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const API_BASE_URL = import.meta.env.VITE_BASE_API_URL;
+const API_BASE_URL = process.env.VITE_BASE_API_URL;
 
 export const createThunk = (name, url, method) =>
   createAsyncThunk(

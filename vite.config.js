@@ -1,14 +1,19 @@
 import fs from "fs";
 import * as path from "path";
-import { defineConfig, splitVendorChunkPlugin } from "vite";
+import { defineConfig, splitVendorChunkPlugin, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import rollupNodePolyFill from "rollup-plugin-node-polyfills";
 import NodeGlobalsPolyfillPlugin from "@esbuild-plugins/node-globals-polyfill";
 import federation from "@originjs/vite-plugin-federation";
 import { lingui } from "@lingui/vite-plugin";
 
-export default () => {
-  return defineConfig({
+export default defineConfig((props) => {
+  const env = loadEnv(props.mode, process.cwd(), "VITE_APP");
+  const envWithProcessPrefix = {
+    global: {},
+    "process.env": `${JSON.stringify(env)}`,
+  };
+  return {
     plugins: [
       react({
         babel: {
@@ -30,9 +35,7 @@ export default () => {
         shared: ["react", "react-dom", "react-router-dom"],
       }),
     ],
-    define: {
-      global: "globalThis",
-    },
+    define: envWithProcessPrefix,
     server: {
       port: 8080,
       proxy: "https://pixinvent.com/",
@@ -160,5 +163,5 @@ export default () => {
         plugins: [rollupNodePolyFill()],
       },
     },
-  });
-};
+  };
+});

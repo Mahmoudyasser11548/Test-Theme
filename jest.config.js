@@ -14,10 +14,10 @@ module.exports = {
     "@utils": "<rootDir>/src/utility/Utils",
     "@hooks/(.+)": "<rootDir>/src/utility/hooks/$1",
     "@redux/(.+)": "<rootDir>/src/utility/redux/$1",
-    "@views/(.+)": "<rootDir>/src/utility/views/$1",
+    "@views/(.+)": "<rootDir>/src/views/$1",
   },
   testEnvironment: "jsdom",
   transform: {
-    "^.+\\.js?$": "babel-jest",
+    "^.+\\.jsx?$": "babel-jest",
   },
 };
