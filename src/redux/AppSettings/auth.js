@@ -1,9 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+/* eslint-disable implicit-arrow-linebreak */
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { jwtDecode } from "jwt-decode";
-import { createThunk } from "../../services/Methods";
+import api from "../../services";
 
-export const login = createThunk("login", "auth/login", "post");
+export const login = createAsyncThunk(
+  "login/post",
+  async (payload, { rejectWithValue }) => {
+    try {
+      const res = await api.post("auth/login", payload);
+      return res.data.payload;
+    } catch (error) {
+      return rejectWithValue(error.response.data.errorMessage);
+    }
+  },
+);
 
 const initialState = {
   user: null,
@@ -28,9 +39,9 @@ const authSlice = createSlice({
     builder
       // Login
       .addCase(login.fulfilled, (state, action) => {
-        const token = action.payload.payload.token;
-        const refreshToken = action.payload.payload.refreshToken;
-        const user = jwtDecode(token);
+        const token = action.payload.token;
+        const refreshToken = action.payload.refreshToken;
+        const user = jwtDecode(token && token);
         state.user = user;
         state.isLoggedIn = true;
         localStorage.setItem("userData", JSON.stringify(user));

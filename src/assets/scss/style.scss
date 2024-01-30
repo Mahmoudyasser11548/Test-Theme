@@ -67,11 +67,10 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 .btn-icon,
 .btn-back {
   border-radius: 0 5px 5px 0 !important;
-  background-color: #8f48d2;
-  border-color: #8f48d2;
+  background-color: #37b1d7;
+  border-color: #37b1d7;
   &:focus {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px rgba(101, 45, 144, 0.7),
-      0 1px 2px 0 black;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #d6eaf5, 0 1px 2px 0 black;
   }
 }
 .btn-scroll {
@@ -89,8 +88,8 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 }
 
 .submit-btn {
-  background-color: #8f48d2;
-  border-color: #8f48d2;
+  background-color: #37b1d7;
+  border-color: #37b1d7;
   &:focus {
     box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px rgba(101, 45, 144, 0.7),
       0 1px 2px 0 black;
@@ -99,11 +98,11 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 
 .p-inputtext {
   &:focus {
-    box-shadow: 0 0 0 0.2rem #dab6fc;
-    border-color: #8f48d2;
+    box-shadow: 0 0 0 0.2rem #d6eaf5;
+    border-color: #37b1d7;
   }
   &:hover {
-    border-color: #8f48d2;
+    border-color: #37b1d7;
   }
 }
 
@@ -142,17 +141,17 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     display: none;
   }
   .p-fileupload-choose {
-    color: #8f48d2;
+    color: #37b1d7;
   }
 }
 
 .p-datepicker-trigger {
   border-radius: 0px 5px 5px 0 !important;
   border-radius: 0 5px 5px 0 !important;
-  background-color: #8f48d2;
-  border-color: #8f48d2;
+  background-color: #37b1d7;
+  border-color: #37b1d7;
   &:focus {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #dab6fc, 0 1px 2px 0 black;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #d6eaf5, 0 1px 2px 0 black;
   }
 }
 
@@ -191,7 +190,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     > tr {
       border-radius: 10px;
       &.p-highlight {
-        color: #8f48d2;
+        color: #37b1d7;
       }
       td {
         &:first-child {
@@ -207,22 +206,22 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 
 .p-button {
   border-radius: 5px;
-  background: #8f48d2;
+  background: #37b1d7;
   &:not(.delete-btn) {
-    border-color: #8f48d2;
+    border-color: #37b1d7;
   }
   &:focus:not(.delete-btn, .custom-cancel-btn) {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #dab6fc, 0 1px 2px 0 black;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #d6eaf5, 0 1px 2px 0 black;
   }
   &.p-button-outlined {
     background: transparent;
   }
   &.p-button-outlined:not(.delete-btn, .custom-cancel-btn) {
-    border-color: #8f48d2;
+    border-color: #37b1d7;
     background: transparent;
-    color: #8f48d2;
+    color: #37b1d7;
     &:focus {
-      box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #dab6fc, 0 1px 2px 0 black;
+      box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #d6eaf5, 0 1px 2px 0 black;
     }
   }
 }
@@ -245,17 +244,17 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 
 // Radio Btn
 .p-inputswitch-slider {
-  background-color: #8f48d2;
+  background-color: #37b1d7;
 }
 
 .p-checkbox-box,
 .p-radiobutton-box {
   &.p-highlight {
-    border-color: #8f48d2;
-    background: #8f48d2;
+    border-color: #37b1d7;
+    background: #37b1d7;
   }
   &:hover {
-    border-color: #8f48d2;
+    border-color: #37b1d7;
   }
 }
 
@@ -271,14 +270,14 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 }
 
 .p-focus {
-  box-shadow: 0 0 0 0.2rem #dab6fc;
-  border-color: #8f48d2;
+  box-shadow: 0 0 0 0.2rem #d6eaf5;
+  border-color: #37b1d7;
 }
 
 .p-multiselect,
 .p-dropdown {
   &:hover {
-    border-color: #8f48d2;
+    border-color: #37b1d7;
   }
 }
 

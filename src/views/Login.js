@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 // ** Styles
 import "@styles/react/pages/page-authentication.scss";
 
@@ -15,7 +16,7 @@ import {
 } from "reactstrap";
 import { Form, Formik } from "formik";
 // ** Custom Components
-import { PasswordField, InputField } from "@customcomponents";
+import { PasswordField, InputField, ToastAlert } from "@customcomponents";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -24,18 +25,19 @@ import illustrationsDark from "@src/assets/images/pages/login-v2-dark.svg";
 // ** Illustrations Imports
 import illustrationsLight from "@src/assets/images/pages/login-v2.svg";
 import themeConfig from "@configs/themeConfig";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 // ** React Imports
 import { useSkin } from "@hooks/useSkin";
 
 import { login } from "@store/AppSettings/auth";
 
 const Login = () => {
+  const toastRef = useRef(null);
   const navigate = useNavigate();
 
   // Redux Selectors
   const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { isLoggedIn, errors } = useSelector((state) => state.auth);
 
   const { skin } = useSkin();
 
@@ -57,6 +59,18 @@ const Login = () => {
 
   const onSubmit = (values) => {
     dispatch(login(values));
+
+    errors
+      ? toastRef.current.show({
+          severity: "error",
+          summary: "Error",
+          detail: errors,
+        })
+      : toastRef.current.show({
+          severity: "success",
+          summary: "Success",
+          detail: "Successfully Login",
+        });
   };
   useEffect(() => {
     if (!!isLoggedIn) {
@@ -64,62 +78,76 @@ const Login = () => {
     }
   }, [isLoggedIn]);
   return (
-    <div className="auth-wrapper auth-cover">
-      <Row className="auth-inner m-0">
-        <Link className="brand-logo" to="/" onClick={(e) => e.preventDefault()}>
-          <img
-            src={themeConfig.app.appLogoImage}
-            alt="logo"
-            style={{ width: "150px", height: "50px" }}
-          />
-        </Link>
-        <Col className="d-none d-lg-flex align-items-center p-5" lg="8" sm="12">
-          <div className="w-100 d-lg-flex align-items-center justify-content-center px-5">
-            <img className="img-fluid" src={source} alt="Login Cover" />
-          </div>
-        </Col>
-        <Col
-          className="d-flex align-items-center auth-bg px-2 p-lg-5"
-          lg="4"
-          sm="12"
-        >
-          <Col className="px-xl-2 mx-auto" sm="8" md="6" lg="12">
-            <CardTitle tag="h2" className="fw-bold mb-1">
-              SCIB Paints AID 👋
-            </CardTitle>
-            <CardText className="mb-2">Login to your account</CardText>
-            <Formik
-              onSubmit={onSubmit}
-              initialValues={initialValue}
-              validationSchema={validationSchema}
-            >
-              {({ handleSubmit }) => (
-                <Form className="auth-login-form mt-2" onSubmit={handleSubmit}>
-                  <InputField
-                    label="Username"
-                    name="username"
-                    placeholder="username"
-                  />
-                  <PasswordField
-                    name="password"
-                    label={<Trans id="Password" />}
-                  />
-                  <div className="form-check mb-1">
-                    <Input type="checkbox" id="remember-me" />
-                    <Label className="form-check-label" for="remember-me">
-                      Remember Me
-                    </Label>
-                  </div>
-                  <Button type="submit" color="primary" block>
-                    Login
-                  </Button>
-                </Form>
-              )}
-            </Formik>
+    <>
+      <ToastAlert toastRef={toastRef} />
+      <div className="auth-wrapper auth-cover">
+        <Row className="auth-inner m-0">
+          <Link
+            className="brand-logo"
+            to="/"
+            onClick={(e) => e.preventDefault()}
+          >
+            <img
+              src={themeConfig.app.appLogoImage}
+              alt="logo"
+              style={{ width: "100px", height: "50px" }}
+            />
+          </Link>
+          <Col
+            className="d-none d-lg-flex align-items-center p-5"
+            lg="8"
+            sm="12"
+          >
+            <div className="w-100 d-lg-flex align-items-center justify-content-center px-5">
+              <img className="img-fluid" src={source} alt="Login Cover" />
+            </div>
           </Col>
-        </Col>
-      </Row>
-    </div>
+          <Col
+            className="d-flex align-items-center auth-bg px-2 p-lg-5"
+            lg="4"
+            sm="12"
+          >
+            <Col className="px-xl-2 mx-auto" sm="8" md="6" lg="12">
+              <CardTitle tag="h2" className="fw-bold mb-1">
+                SCIB Paints AID 👋
+              </CardTitle>
+              <CardText className="mb-2">Login to your account</CardText>
+              <Formik
+                onSubmit={onSubmit}
+                initialValues={initialValue}
+                validationSchema={validationSchema}
+              >
+                {({ handleSubmit }) => (
+                  <Form
+                    className="auth-login-form mt-2"
+                    onSubmit={handleSubmit}
+                  >
+                    <InputField
+                      label="Username"
+                      name="username"
+                      placeholder="username"
+                    />
+                    <PasswordField
+                      name="password"
+                      label={<Trans id="Password" />}
+                    />
+                    <div className="form-check mb-1">
+                      <Input type="checkbox" id="remember-me" />
+                      <Label className="form-check-label" for="remember-me">
+                        Remember Me
+                      </Label>
+                    </div>
+                    <Button type="submit" color="primary" block>
+                      Login
+                    </Button>
+                  </Form>
+                )}
+              </Formik>
+            </Col>
+          </Col>
+        </Row>
+      </div>
+    </>
   );
 };
 

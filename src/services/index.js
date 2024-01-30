@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = process.env.VITE_BASE_API_URL;
+const baseURL = process.env.VITE_APP_BASE_API_URL;
 
 const createApi = () => {
   const api = axios.create({
