@@ -6,7 +6,7 @@ import logo from "../assets/images/logo/logo.svg";
 //Template config options
 const themeConfig = {
   app: {
-    appName: "TDS",
+    appName: "iMakaseb",
     appLogoImage: logo,
   },
   layout: {

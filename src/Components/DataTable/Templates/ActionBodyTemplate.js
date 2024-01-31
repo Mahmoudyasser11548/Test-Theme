@@ -32,7 +32,7 @@ const ActionBodyTemplate = ({
             target={target.current}
             show={showPopup}
             onHide={onHidePopup}
-            confirmHandler={confirmHandler}
+            confirmHandler={confirmHandler(rowData)}
           />
           <Button
             ref={target}

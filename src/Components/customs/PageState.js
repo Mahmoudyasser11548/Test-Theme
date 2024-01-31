@@ -8,7 +8,7 @@ const PageState = ({ Page, name, params }) => {
   const dispatch = useDispatch();
   const defaultState = {
     page: 1,
-    pageSize: configs.pageSize,
+    pageSize: configs?.pageSize,
     filters: "",
   };
   const { pages } = useSelector((state) => state.page);

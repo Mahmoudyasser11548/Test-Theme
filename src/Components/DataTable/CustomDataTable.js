@@ -30,11 +30,13 @@ const CustomDataTable = ({
   };
 
   const handlePage = (event) => {
+    // console.log("Page: " + event);
     setFilters &&
       setFilters({ ...filters, page: event.first / event.rows + 1 });
   };
 
   const handleSort = (event) => {
+    // console.log("Sort: " + event);
     setFilters &&
       setFilters({
         ...filters,
@@ -62,13 +64,13 @@ const CustomDataTable = ({
       filterDisplay="menu" // row, menu
       tableStyle={{ minWidth: "50rem" }}
       removableSort
-      sortField={filters.sortBy}
-      sortOrder={filters.sortOrder === "asc" ? 1 : -1}
+      sortField={filters?.sortBy}
+      sortOrder={filters?.sortOrder === "asc" ? 1 : -1}
       sortMode="multiple"
       onSort={handleSort}
       paginator
       onPage={handlePage}
-      first={(filters.page - 1) * (filters.pageSize || 10)}
+      first={(filters?.page - 1) * (filters?.pageSize || 10)}
       rows={metadata?.pageSize || 10}
       totalRecords={metadata?.totalItemCount || 0}
       lazy
@@ -106,7 +108,7 @@ const CustomDataTable = ({
           showFilterMatchModes={false}
           showFilterMenuOptions={false}
           filterPlaceholder={col?.filterPlaceholder || "enter value"}
-          filterType={col?.filterType}
+          filterType={col?.filterType || "text"}
           {...col}
         />
       ))}

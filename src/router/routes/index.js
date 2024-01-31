@@ -3,8 +3,7 @@ import React, { Fragment, lazy } from "react";
 import { Navigate } from "react-router-dom";
 
 // Routes
-import Sample from "@views/Sample";
-
+import tenants from "@views/Tenants";
 // ** Layouts
 import BlankLayout from "@layouts/BlankLayout";
 import VerticalLayout from "@src/layouts/VerticalLayout";
@@ -88,7 +87,7 @@ const Routes = [
       layout: "blank",
     },
   },
-  ...Sample,
+  ...tenants,
 ];
 
 const getRouteMeta = (route) => {
