@@ -67,7 +67,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 .btn-icon,
 .btn-back {
   border-radius: 0 5px 5px 0 !important;
-  background-color: #37b1d7;
+  background-color: #37b1d7 !important;
   border-color: #37b1d7;
   &:focus {
     box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #d6eaf5, 0 1px 2px 0 black;
@@ -91,18 +91,17 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
   background-color: #37b1d7;
   border-color: #37b1d7;
   &:focus {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px rgba(101, 45, 144, 0.7),
-      0 1px 2px 0 black;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #d6eaf5, 0 1px 2px 0 black !important;
   }
 }
 
 .p-inputtext {
   &:focus {
     box-shadow: 0 0 0 0.2rem #d6eaf5;
-    border-color: #37b1d7;
+    border-color: #37b1d7 !important;
   }
   &:hover {
-    border-color: #37b1d7;
+    border-color: #37b1d7 !important;
   }
 }
 
@@ -141,15 +140,15 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     display: none;
   }
   .p-fileupload-choose {
-    color: #37b1d7;
+    color: #37b1d7 !important;
   }
 }
 
 .p-datepicker-trigger {
   border-radius: 0px 5px 5px 0 !important;
   border-radius: 0 5px 5px 0 !important;
-  background-color: #37b1d7;
-  border-color: #37b1d7;
+  background-color: #37b1d7 !important;
+  border-color: #37b1d7 !important;
   &:focus {
     box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #d6eaf5, 0 1px 2px 0 black;
   }
@@ -168,8 +167,19 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 .p-datatable {
   border-radius: 10px;
   box-shadow: 0 0 0 0 0;
+  .p-sortable-column {
+    &.p-highlight {
+      svg {
+        color: #37b1d7 !important;
+      }
+      color: #37b1d7 !important;
+    }
+    &:focus {
+      box-shadow: inset 0 0 0 0.15rem #d6eaf5;
+    }
+  }
   .p-datatable-header {
-    background-color: transparent;
+    background-color: transparent !important;
     border: 0;
   }
   .p-datatable-thead {
@@ -177,7 +187,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
       background-color: #f8f8fa !important;
     }
     th[role="columnheader"] {
-      background-color: transparent;
+      background-color: transparent !important;
       &:first-child {
         border-radius: 10px 0 0 10px;
       }
@@ -190,7 +200,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     > tr {
       border-radius: 10px;
       &.p-highlight {
-        color: #37b1d7;
+        color: #37b1d7 !important;
       }
       td {
         &:first-child {
@@ -213,13 +223,19 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
   &:focus:not(.delete-btn, .custom-cancel-btn) {
     box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #d6eaf5, 0 1px 2px 0 black;
   }
+  &:enabled {
+    &:hover {
+      background-color: #37b1d7;
+      border-color: #37b1d7;
+    }
+  }
   &.p-button-outlined {
     background: transparent;
   }
   &.p-button-outlined:not(.delete-btn, .custom-cancel-btn) {
-    border-color: #37b1d7;
+    border-color: #37b1d7 !important;
     background: transparent;
-    color: #37b1d7;
+    color: #37b1d7 !important;
     &:focus {
       box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #d6eaf5, 0 1px 2px 0 black;
     }
@@ -243,8 +259,20 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 }
 
 // Radio Btn
-.p-inputswitch-slider {
-  background-color: #37b1d7;
+// .p-inputswitch-slider {
+//   background-color: #37b1d7;
+// }
+
+.p-inputswitch {
+  &.p-inputswitch-checked {
+    .p-inputswitch-slider {
+      background-color: #37b1d7 !important;
+    }
+  }
+  .p-inputswitch-slider {
+    background: #cecece;
+    border-radius: 6px;
+  }
 }
 
 .p-checkbox-box,

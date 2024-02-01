@@ -19,5 +19,6 @@ export default [
     title: "Tenants",
     icon: <User size={20} />,
     navLink: "/tenants/list",
+    permissions: "read_user",
   },
 ];

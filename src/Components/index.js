@@ -18,6 +18,7 @@ import ColorPickerField from "./Form/ColorPickerField";
 
 // Btns
 import SubmitButton from "./Btns/SubmitButton";
+import PermissionButton from "./Btns/PermissionButton";
 
 // Customs
 import ToastAlert from "./customs/Toast";
@@ -39,6 +40,7 @@ export {
   PageState,
   ToastAlert,
   SubmitButton,
+  PermissionButton,
   ColorPickerField,
   SwitchField,
   PdfField,

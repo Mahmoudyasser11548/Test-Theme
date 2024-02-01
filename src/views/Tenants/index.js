@@ -7,10 +7,16 @@ const routes = [
   {
     path: "tenants/list",
     element: <List />,
+    meta: {
+      permission: "read_user",
+    },
   },
   {
     path: "tenants/details/:id",
     element: <Details />,
+    meta: {
+      permission: "read_user",
+    },
   },
 ];
 

@@ -1,12 +1,8 @@
-import { Button } from "primereact/button";
-import React, { useRef } from "react";
-import PopupDialog from "../../Dialogs/PopupDialog";
+import React from "react";
+import { PermissionButton } from "@customcomponents";
 
 const ActionBodyTemplate = ({
   rowData,
-  showPopup,
-  onHidePopup,
-  confirmHandler,
   // editPermission,
   // deletePermission,
   editHandler,
@@ -14,12 +10,10 @@ const ActionBodyTemplate = ({
   hideDelete = false,
   hideEdit = false,
 }) => {
-  const target = useRef(null);
-
   return (
     <React.Fragment>
       {!hideEdit && (
-        <Button
+        <PermissionButton
           icon="pi pi-pencil"
           outlined
           className="me-1 rounded-pill"
@@ -28,14 +22,7 @@ const ActionBodyTemplate = ({
       )}
       {!hideDelete && (
         <>
-          <PopupDialog
-            target={target.current}
-            show={showPopup}
-            onHide={onHidePopup}
-            confirmHandler={confirmHandler(rowData)}
-          />
-          <Button
-            ref={target}
+          <PermissionButton
             icon="pi pi-trash"
             outlined
             severity="danger"

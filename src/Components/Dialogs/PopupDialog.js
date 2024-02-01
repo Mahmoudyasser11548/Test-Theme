@@ -2,8 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ConfirmPopup } from "primereact/confirmpopup";
 import { Toast } from "primereact/toast";
-import { Trans } from "@lingui/react";
-import { Button } from "primereact/button";
+import { useDispatch } from "react-redux";
 
 const PopupDialog = ({
   target,
@@ -18,6 +17,7 @@ const PopupDialog = ({
   showToast,
 }) => {
   const toast = useRef(null);
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(true);
 
   const close = () => {

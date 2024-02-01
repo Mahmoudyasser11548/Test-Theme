@@ -41,7 +41,7 @@ export const getTenants = createAsyncThunk(
   "tenants/get",
   async (payload, { rejectWithValue }) => {
     try {
-      const res = await api.get("tenant/search", payload);
+      const res = await api.get(`tenant/search`, payload);
       return res.data.payload;
     } catch (error) {
       return rejectWithValue(error.response.data.errorMessage);
@@ -65,7 +65,8 @@ const initialState = {
   tenants: [],
   tenant: {},
   tenants_metadata: null,
-  tenants_loading: false,
+  loading: false,
+  errors: "",
   openDeleteDialog: false,
   openDialog: false,
 };

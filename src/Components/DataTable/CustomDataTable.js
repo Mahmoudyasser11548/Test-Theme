@@ -30,13 +30,11 @@ const CustomDataTable = ({
   };
 
   const handlePage = (event) => {
-    // console.log("Page: " + event);
     setFilters &&
       setFilters({ ...filters, page: event.first / event.rows + 1 });
   };
 
   const handleSort = (event) => {
-    // console.log("Sort: " + event);
     setFilters &&
       setFilters({
         ...filters,
@@ -63,10 +61,8 @@ const CustomDataTable = ({
       value={data}
       filterDisplay="menu" // row, menu
       tableStyle={{ minWidth: "50rem" }}
-      removableSort
       sortField={filters?.sortBy}
       sortOrder={filters?.sortOrder === "asc" ? 1 : -1}
-      sortMode="multiple"
       onSort={handleSort}
       paginator
       onPage={handlePage}

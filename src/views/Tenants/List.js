@@ -1,31 +1,54 @@
-import React, { useEffect } from "react";
-import { PrimaryCard, CustomDataTable, PageState } from "@customcomponents";
-import { Button } from "primereact/button";
+import React, { useEffect, useState } from "react";
+import {
+  PrimaryCard,
+  CustomDataTable,
+  PageState,
+  PermissionButton,
+  CustomDialog,
+} from "@customcomponents";
 import { Plus } from "react-feather";
 import { useNavigate } from "react-router-dom";
 import { Trans } from "@lingui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTenants } from "@store/slices/tenants";
+import {
+  getTenants,
+  setTenants,
+  showDeleteDialog,
+  resetDialog,
+  deleteTenant,
+} from "@store/slices/tenants";
 import { Columns } from "./Columns";
 
 const TenantsList = ({ filters, setFilters }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [tenantId, setTenantId] = useState("");
 
   // Selectors
-  const { tenants, tenants_metadata, tenants_loading } = useSelector(
+  const { tenants, tenants_metadata, loading, openDeleteDialog } = useSelector(
     (state) => state.tenant,
   );
 
   // Handlers
-  const deleteHandler = () => {};
-  const editHandler = () => {};
+  const deleteHandler = (rowData) => {
+    setTenantId(rowData?.id);
+    dispatch(showDeleteDialog());
+  };
+
+  const editHandler = (rowData) => {
+    navigate(`/tenants/details/${rowData?.id}`);
+  };
+
+  const confirmDeleteTenant = () => {
+    dispatch(deleteTenant(tenantId));
+  };
 
   useEffect(() => {
-    dispatch(getTenants({ ...filters }));
+    dispatch(getTenants(filters));
+    return () => {
+      dispatch(setTenants());
+    };
   }, [filters]);
-
-  // console.log(filters);
 
   return (
     <>
@@ -33,7 +56,7 @@ const TenantsList = ({ filters, setFilters }) => {
         breadCrumbs={[{ label: "Tenants", isActive: true }]}
         title={"Tenants"}
         addButton={
-          <Button
+          <PermissionButton
             color="primary"
             className="btn-primary ml-2 rounded-pill"
             onClick={() => navigate("/tenants/details/new")}
@@ -42,14 +65,14 @@ const TenantsList = ({ filters, setFilters }) => {
             <span className="align-middle ml-25">
               <Trans id="Add Tenant" />
             </span>
-          </Button>
+          </PermissionButton>
         }
         body={
           <>
             <CustomDataTable
               keyField="id"
               setFilters={setFilters}
-              loading={tenants_loading || false}
+              loading={loading || false}
               metadata={tenants_metadata}
               data={tenants || []}
               filters={filters}
@@ -58,6 +81,21 @@ const TenantsList = ({ filters, setFilters }) => {
             />
           </>
         }
+      />
+
+      <CustomDialog
+        title={<Trans id="Delete Tenant" />}
+        show={openDeleteDialog}
+        onHide={resetDialog}
+        closeOnConfirm={true}
+        body={
+          <h3>
+            <Trans id="Are you sure you want to delete?" />
+          </h3>
+        }
+        onConfirmHandler={confirmDeleteTenant}
+        closeButtonTitle={"No"}
+        confirmButtonTitle={"Yes"}
       />
     </>
   );
