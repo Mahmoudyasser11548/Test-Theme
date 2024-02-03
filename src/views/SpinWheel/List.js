@@ -6,64 +6,65 @@ import {
   PermissionButton,
   CustomDialog,
 } from "@customcomponents";
-import { Plus } from "react-feather";
 import { useNavigate } from "react-router-dom";
+import { Plus } from "react-feather";
 import { Trans } from "@lingui/react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getTenants,
-  setTenants,
+  getWheels,
   showDeleteDialog,
   resetDialog,
-  deleteTenant,
-} from "@store/slices/tenants";
+  deleteWheel,
+  setWheels,
+} from "@store/slices/spinWheel";
+
 import { Columns } from "./Columns";
 
-const TenantsList = ({ filters, setFilters }) => {
+const WheelList = ({ filters, setFilters }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [tenantId, setTenantId] = useState("");
 
-  // Selectors
-  const { tenants, tenants_metadata, loading, openDeleteDialog } = useSelector(
-    (state) => state.tenant,
+  const [wheelId, setWheelId] = useState("");
+
+  const { spins, spin_metadata, loading, openDeleteDialog } = useSelector(
+    (state) => state.spin,
   );
 
   // Handlers
   const deleteHandler = (rowData) => {
-    setTenantId(rowData?.id);
+    setWheelId(rowData?.id);
     dispatch(showDeleteDialog());
   };
 
   const editHandler = (rowData) => {
-    navigate(`/tenants/details/${rowData?.id}`);
+    navigate(`/spinWheel/tabs/${rowData?.id}`);
   };
 
-  const confirmDeleteTenant = () => {
-    dispatch(deleteTenant(tenantId));
+  const confirmDeleteWheel = () => {
+    dispatch(deleteWheel(wheelId));
   };
 
   useEffect(() => {
-    dispatch(getTenants({ ...filters }));
+    dispatch(getWheels({ ...filters }));
     return () => {
-      dispatch(setTenants());
+      dispatch(setWheels());
     };
   }, [filters]);
 
   return (
     <>
       <PrimaryCard
-        breadCrumbs={[{ label: "Tenants", isActive: true }]}
-        title={"Tenants"}
+        breadCrumbs={[{ label: "Wheels", isActive: true }]}
+        title={"Spin Wheels"}
         addButton={
           <PermissionButton
             color="primary"
             className="btn-primary ml-2 rounded-pill"
-            onClick={() => navigate("/tenants/details/new")}
+            onClick={() => navigate("/spinWheel/tabs/new")}
           >
             <Plus size={14} />
             <span className="align-middle ml-25">
-              <Trans id="Add Tenant" />
+              <Trans id="Add Wheel" />
             </span>
           </PermissionButton>
         }
@@ -73,8 +74,8 @@ const TenantsList = ({ filters, setFilters }) => {
               keyField="id"
               setFilters={setFilters}
               loading={loading || false}
-              metadata={tenants_metadata || null}
-              data={tenants || []}
+              metadata={spin_metadata || null}
+              data={spins || []}
               filters={filters}
               noHeader={true}
               columns={Columns(deleteHandler, editHandler)}
@@ -84,7 +85,7 @@ const TenantsList = ({ filters, setFilters }) => {
       />
 
       <CustomDialog
-        title={<Trans id="Delete Tenant" />}
+        title={<Trans id="Delete Wheel" />}
         show={openDeleteDialog}
         onHide={resetDialog}
         closeOnConfirm={true}
@@ -93,7 +94,7 @@ const TenantsList = ({ filters, setFilters }) => {
             <Trans id="Are you sure you want to delete?" />
           </h3>
         }
-        onConfirmHandler={confirmDeleteTenant}
+        onConfirmHandler={confirmDeleteWheel}
         closeButtonTitle={"No"}
         confirmButtonTitle={"Yes"}
       />
@@ -102,7 +103,7 @@ const TenantsList = ({ filters, setFilters }) => {
 };
 
 const List = () => {
-  return <PageState Page={TenantsList} name="tenantsPage" />;
+  return <PageState Page={WheelList} name="WheelsPage" />;
 };
 
 export default List;

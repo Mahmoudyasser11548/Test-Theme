@@ -1,3 +1,4 @@
+import React from "react";
 // ** Dropdowns Imports
 import UserDropdown from "./UserDropdown";
 import IntlDropdown from "./IntlDropdown";

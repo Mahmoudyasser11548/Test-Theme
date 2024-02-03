@@ -3,6 +3,7 @@ import { render, renderHook } from "@testing-library/react";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { ThemeContext } from "./src/utility/context/ThemeColors";
+import IntlProviderWrapper from "./src/utility/context/IntlProviderWrapper";
 import { BrowserRouter } from "react-router-dom";
 import rootReducer from "@store/rootReducer";
 
@@ -18,7 +19,9 @@ export function renderWithProviders(
     return (
       <BrowserRouter>
         <Provider store={store}>
-          <ThemeContext>{children}</ThemeContext>
+          <ThemeContext>
+            <IntlProviderWrapper>{children}</IntlProviderWrapper>
+          </ThemeContext>
         </Provider>
       </BrowserRouter>
     );
@@ -39,7 +42,10 @@ export function renderHooksWithProviders(
     return (
       <BrowserRouter>
         <Provider store={store}>
-          <ThemeContext>{children}</ThemeContext>
+          <ThemeContext>
+            {" "}
+            <IntlProviderWrapper>{children}</IntlProviderWrapper>
+          </ThemeContext>
         </Provider>
       </BrowserRouter>
     );

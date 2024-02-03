@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { locales } from "@store/SupportedLocales";
 import { changeLocale } from "@store/AppSettings/app";
 // Context
-export const IntlContext = createContext();
+const IntlContext = createContext();
 
 // Activate the language dynamically
 async function dynamicActivate(locale) {
@@ -46,4 +46,5 @@ const IntlProviderWrapper = ({ children }) => {
     </IntlContext.Provider>
   );
 };
+export { IntlContext };
 export default IntlProviderWrapper;

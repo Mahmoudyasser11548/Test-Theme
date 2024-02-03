@@ -4,6 +4,10 @@ import { Navigate } from "react-router-dom";
 
 // Routes
 import tenants from "@views/Tenants";
+import spinWheel from "@views/SpinWheel";
+import users from "@views/usersManagement/Users";
+import roles from "@views/usersManagement/Roles";
+
 // ** Layouts
 import BlankLayout from "@layouts/BlankLayout";
 import VerticalLayout from "@src/layouts/VerticalLayout";
@@ -88,6 +92,9 @@ const Routes = [
     },
   },
   ...tenants,
+  ...spinWheel,
+  ...roles,
+  ...users,
 ];
 
 const getRouteMeta = (route) => {

@@ -1,7 +1,7 @@
 /* eslint-disable quote-props */
 /* eslint-disable implicit-arrow-linebreak */
 // ** React Imports
-import { Fragment, useState, useRef } from "react";
+import React, { Fragment, useState, useRef } from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 

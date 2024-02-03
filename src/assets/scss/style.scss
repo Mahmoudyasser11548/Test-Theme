@@ -232,10 +232,10 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
   &.p-button-outlined {
     background: transparent;
   }
-  &.p-button-outlined:not(.delete-btn, .custom-cancel-btn) {
-    border-color: #37b1d7 !important;
+  &.p-button-outlined:not(.delete-btn, .action-btn, .custom-cancel-btn) {
+    border-color: #37b1d7;
     background: transparent;
-    color: #37b1d7 !important;
+    color: #37b1d7;
     &:focus {
       box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #d6eaf5, 0 1px 2px 0 black;
     }

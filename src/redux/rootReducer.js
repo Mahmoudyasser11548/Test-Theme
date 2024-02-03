@@ -8,7 +8,19 @@ import auth from "./AppSettings/auth";
 // Slices
 import sample from "./Slices/sample";
 import tenant from "./Slices/tenants";
+import spin from "./Slices/spinWheel";
+import usersManagement from "./Slices/userManagement";
 
-const rootReducer = { navbar, layout, app, auth, sample, page, tenant };
+const rootReducer = {
+  navbar,
+  layout,
+  app,
+  auth,
+  sample,
+  page,
+  tenant,
+  spin,
+  usersManagement,
+};
 
 export default rootReducer;

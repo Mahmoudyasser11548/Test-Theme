@@ -68,6 +68,7 @@ const CustomDataTable = ({
       onPage={handlePage}
       first={(filters?.page - 1) * (filters?.pageSize || 10)}
       rows={metadata?.pageSize || 10}
+      rowsPerPageOptions={[5, 10, 25, 50]}
       totalRecords={metadata?.totalItemCount || 0}
       lazy
       resizableColumns={resizableColumns}

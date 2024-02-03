@@ -1,5 +1,6 @@
+/* eslint-disable implicit-arrow-linebreak */
 // ** React Imports
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // ** Third Party Components
 import axios from "axios";
@@ -110,7 +111,7 @@ const NavbarSearch = () => {
               filteredData,
               activeSuggestion,
               onSuggestionItemClick,
-              onSuggestionItemHover
+              onSuggestionItemHover,
             ) => {
               const IconTag = Icon[item.icon ? item.icon : "X"];
               return (

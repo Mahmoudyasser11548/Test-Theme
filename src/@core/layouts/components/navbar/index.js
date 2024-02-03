@@ -1,5 +1,5 @@
 // ** React Imports
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 
 // ** Custom Components
 import NavbarUser from "./NavbarUser";

@@ -16,7 +16,7 @@ const ActionBodyTemplate = ({
         <PermissionButton
           icon="pi pi-pencil"
           outlined
-          className="me-1 rounded-pill"
+          className="me-1 border-0 action-btn"
           onClick={() => editHandler(rowData)}
         />
       )}
@@ -26,7 +26,7 @@ const ActionBodyTemplate = ({
             icon="pi pi-trash"
             outlined
             severity="danger"
-            className="rounded-pill delete-btn"
+            className="border-0 delete-btn"
             onClick={() => deleteHandler(rowData)}
           />
         </>
