@@ -10,23 +10,17 @@ export default [
     navLink: "/home",
   },
   {
-    id: "secondPage",
-    title: "Second Page",
-    icon: <Mail size={20} />,
-    navLink: "/second-page",
+    id: "spinWheel",
+    title: <Trans id="Spin Wheels" />,
+    icon: <Chrome size={20} />,
+    navLink: "/spinWheel/list",
+    // permissions: "read_user",
   },
   {
     id: "tenants",
     title: <Trans id="Tenants" />,
     icon: <User size={20} />,
     navLink: "/tenants/list",
-    permissions: "read_user",
-  },
-  {
-    id: "spinWheel",
-    title: <Trans id="Spin Wheels" />,
-    icon: <Chrome size={20} />,
-    navLink: "/spinWheel/list",
     permissions: "read_user",
   },
   {

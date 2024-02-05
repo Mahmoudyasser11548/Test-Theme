@@ -7,7 +7,7 @@ import tenants from "@views/Tenants";
 import spinWheel from "@views/SpinWheel";
 import users from "@views/usersManagement/Users";
 import roles from "@views/usersManagement/Roles";
-
+import spinWheelConfigs from "@views/SpinWheelConfigs";
 // ** Layouts
 import BlankLayout from "@layouts/BlankLayout";
 import VerticalLayout from "@src/layouts/VerticalLayout";
@@ -34,7 +34,6 @@ const TemplateTitle = "%s - Vuexy React Admin Template";
 const DefaultRoute = "/home";
 
 const Home = lazy(() => import("../../views/Home"));
-const SecondPage = lazy(() => import("../../views/SecondPage"));
 const Login = lazy(() => import("../../views/Login"));
 const Register = lazy(() => import("../../views/Register"));
 const ForgotPassword = lazy(() => import("../../views/ForgotPassword"));
@@ -51,10 +50,6 @@ const Routes = [
   {
     path: "/home",
     element: <Home />,
-  },
-  {
-    path: "/second-page",
-    element: <SecondPage />,
   },
   {
     path: "/login",
@@ -95,6 +90,7 @@ const Routes = [
   ...spinWheel,
   ...roles,
   ...users,
+  ...spinWheelConfigs,
 ];
 
 const getRouteMeta = (route) => {
