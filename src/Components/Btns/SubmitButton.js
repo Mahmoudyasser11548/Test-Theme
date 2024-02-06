@@ -1,12 +1,12 @@
 import { Button } from "primereact/button";
 import React from "react";
 
-const SubmitButton = ({ label = "Submit", loading = false, ...props }) => {
+const SubmitButton = ({ label, loading = false, ...props }) => {
   return (
     <Button
       className="rounded submit-btn"
       type="submit"
-      label={label}
+      label={label || ""}
       icon="pi pi-check"
       iconPos="right"
       loading={loading}

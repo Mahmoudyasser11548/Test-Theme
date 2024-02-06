@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Col, Row, TabContent, TabPane } from "reactstrap";
 import Tabs from "./Tabs";
 import { useParams } from "react-router-dom";
-import { Card } from "primereact/card";
 import Wheel from "./Wheel";
 import Rewards from "./Rewards";
 import Segmants from "./Segmants";
 import Fields from "./Fields";
+import { Card } from "primereact/card";
 
 const WholeTabs = () => {
   const { id: wheelId } = useParams();

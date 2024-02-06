@@ -4,7 +4,7 @@ import { InputText } from "primereact/inputtext";
 import classNames from "classnames";
 import { FormFeedback } from "reactstrap";
 
-const InputField = ({ label, placeholder = "enter value", ...props }) => {
+const InputField = ({ label, placeholder = "Enter value", ...props }) => {
   const [field, meta] = useField(props);
   const { touched, error } = meta;
   return (

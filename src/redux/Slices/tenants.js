@@ -17,7 +17,7 @@ export const updateTenant = createAsyncThunk(
   "tenants/update",
   async (payload, { rejectWithValue }) => {
     try {
-      const res = await api.put(`tenant/edit/${payload.id}`, payload);
+      const res = await api.put(`tenant/edit`, payload);
       return res.data.payload;
     } catch (error) {
       return rejectWithValue(error.response.data.errorMessage);

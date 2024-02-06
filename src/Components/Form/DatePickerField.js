@@ -6,7 +6,7 @@ import { FormFeedback } from "reactstrap";
 
 const DatePickerField = ({
   label,
-  placeholder,
+  placeholder = "Enter date",
   enableTime = false,
   callBack = () => {},
   ...props

@@ -10,6 +10,9 @@ import sample from "./Slices/sample";
 import tenant from "./Slices/tenants";
 import spin from "./Slices/spinWheel";
 import usersManagement from "./Slices/userManagement";
+import rewards from "./Slices/Rewards";
+import fields from "./Slices/Fields";
+import segmants from "./Slices/Segmants";
 
 const rootReducer = {
   navbar,
@@ -21,6 +24,9 @@ const rootReducer = {
   tenant,
   spin,
   usersManagement,
+  rewards,
+  fields,
+  segmants,
 };
 
 export default rootReducer;
