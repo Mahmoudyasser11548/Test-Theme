@@ -8,7 +8,7 @@ import {
 } from "@customcomponents";
 import { Plus } from "react-feather";
 import { useNavigate } from "react-router-dom";
-import { Trans } from "@lingui/react";
+import { Trans, useLingui } from "@lingui/react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getTenants,
@@ -20,6 +20,7 @@ import {
 import { Columns } from "./Columns";
 
 const TenantsList = ({ filters, setFilters }) => {
+  const { i18n } = useLingui();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [tenantId, setTenantId] = useState("");
@@ -94,8 +95,8 @@ const TenantsList = ({ filters, setFilters }) => {
           </h3>
         }
         onConfirmHandler={confirmDeleteTenant}
-        closeButtonTitle={"No"}
-        confirmButtonTitle={"Yes"}
+        closeButtonTitle={i18n._("No")}
+        confirmButtonTitle={i18n._("Yes")}
       />
     </>
   );

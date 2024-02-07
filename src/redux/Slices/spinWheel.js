@@ -101,10 +101,10 @@ const spinWheel = createSlice({
       state.openDeleteDialog = false;
     },
     setWheels: (state) => {
-      state.spins = undefined;
+      state.spins = [];
     },
     setWheel: (state) => {
-      state.spin = undefined;
+      state.spin = {};
     },
   },
   extraReducers: (builder) => {

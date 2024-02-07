@@ -1,18 +1,24 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable no-confusing-arrow */
 import { useField } from "formik";
-import { Dropdown } from "primereact/dropdown";
-import { FormFeedback } from "reactstrap";
+import React from "react";
+import classnames from "classnames";
+import { Label, FormGroup } from "reactstrap";
+import Select from "react-select";
 import { useLanguage } from "@hooks/useLanguage";
-import classNames from "classnames";
+import { Message } from "primereact/message";
 
 function SelectField({
   label,
   label_key,
+  withFeedbackLabel = true,
+  customFeedbackLabel,
+  showCustomFeedbackLable = false,
   options,
-  keyValue = "id",
-  title = "name",
+  keyValue,
   getOptionLabel,
+  title,
   callBack = () => {},
   ...props
 }) {
@@ -21,44 +27,66 @@ function SelectField({
   const { touched, error } = meta;
   const { onChange, value, ...fieldProps } = field;
 
-  const selectedOption = options.find(
-    (option) => option[keyValue] === field.value,
-  );
+  const selectedObj =
+    options &&
+    options?.find((a) =>
+      keyValue ? a[keyValue] === field.value : a === field.value,
+    );
 
-  const handleGetLabel = (option) => {
+  const handleGetLabel = (o) => {
     if (getOptionLabel) {
-      return getOptionLabel(option);
+      return getOptionLabel(o);
     }
-    if (typeof option[title] === "object") {
-      return option[title][locale.code];
+    if (typeof o[title] === "object") {
+      return o[title][locale.code];
     }
-    return option[title];
+    return o[title];
   };
 
   return (
-    <div className="p-field d-flex flex-column mb-1">
-      {label && <label htmlFor={field.name}>{label}</label>}
-      <Dropdown
-        value={selectedOption}
-        className={classNames({ "p-invalid": error && touched })}
-        options={options}
-        onChange={(e) => {
-          helpers.setTouched(true);
-          if (e.value) {
-            helpers.setValue(e.value[keyValue]);
-            callBack({ name: field.name, value: e.value });
-          } else {
-            callBack({ name: field.name, value: "" });
-            helpers.setValue("");
+    <>
+      <div className="mb-1">
+        {label && (
+          <Label className="form-label" for={field.name}>
+            {label}
+          </Label>
+        )}
+        <Select
+          isClearable
+          value={selectedObj || ""}
+          className={classnames("react-select", {
+            "is-invalid": error && touched,
+          })}
+          menuPlacement="auto"
+          options={options}
+          isOptionDisabled={(option) => option.disabled}
+          getOptionLabel={handleGetLabel}
+          getOptionValue={(option) =>
+            option[keyValue] !== undefined ? option[keyValue] : option
           }
-        }}
-        optionLabel={handleGetLabel}
-        showClear
-        {...props}
-        {...fieldProps}
-      />
-      {error && touched && <span className="p-error">{error}</span>}
-    </div>
+          onChange={(option) => {
+            helpers.setTouched(true);
+            if (option) {
+              helpers.setValue(
+                option[keyValue] !== undefined ? option[keyValue] : option,
+              );
+              callBack({ name: field.name, value: option });
+
+              return;
+            }
+            callBack({ name: field.name, value: "" });
+
+            helpers.setValue("");
+          }}
+          {...props}
+          classNamePrefix="select"
+          {...fieldProps}
+        />
+        {error && touched && (
+          <Message severity="error" text={error} className="mt-1" />
+        )}
+      </div>
+    </>
   );
 }
 

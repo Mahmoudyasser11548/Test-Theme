@@ -128,7 +128,7 @@ const Details = () => {
                           <InputField
                             label={<Trans id="Username" />}
                             name="username"
-                            placeHolder={i18n._("Enter Username")}
+                            placeholder={i18n._("Enter Username")}
                           />
                         </Col>
 

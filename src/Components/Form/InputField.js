@@ -2,7 +2,7 @@ import React from "react";
 import { useField } from "formik";
 import { InputText } from "primereact/inputtext";
 import classNames from "classnames";
-import { FormFeedback } from "reactstrap";
+import { Message } from "primereact/message";
 
 const InputField = ({ label, placeholder = "Enter value", ...props }) => {
   const [field, meta] = useField(props);
@@ -17,7 +17,9 @@ const InputField = ({ label, placeholder = "Enter value", ...props }) => {
         {...field}
         {...props}
       />
-      {touched && error ? <span className="p-error">{error}</span> : null}
+      {touched && error ? (
+        <Message severity="error" text={error} className="mt-1" />
+      ) : null}
     </div>
   );
 };

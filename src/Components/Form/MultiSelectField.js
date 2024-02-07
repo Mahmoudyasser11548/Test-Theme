@@ -4,7 +4,7 @@ import React from "react";
 import { useField } from "formik";
 import { MultiSelect } from "primereact/multiselect";
 import classNames from "classnames";
-import { FormFeedback } from "reactstrap";
+import { Message } from "primereact/message";
 
 function MultiSelectField({ label, options, keyValue, title, ...props }) {
   const [field, meta, helpers] = useField(props);
@@ -39,7 +39,9 @@ function MultiSelectField({ label, options, keyValue, title, ...props }) {
         }}
         {...props}
       />
-      {error && touched && <span className="p-error">{error}</span>}
+      {error && touched && (
+        <Message severity="error" text={error} className="mt-1" />
+      )}
     </div>
   );
 }

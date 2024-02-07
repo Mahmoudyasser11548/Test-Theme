@@ -2,7 +2,7 @@ import React from "react";
 import { useField } from "formik";
 import { Password } from "primereact/password";
 import classNames from "classnames";
-import { FormFeedback } from "reactstrap";
+import { Message } from "primereact/message";
 
 const PasswordField = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
@@ -27,7 +27,9 @@ const PasswordField = ({ label, ...props }) => {
           placeholder="password"
           toggleMask
         />
-        {touched && error && <span className="p-error">{error}</span>}
+        {touched && error && (
+          <Message severity="error" text={error} className="mt-1" />
+        )}
       </div>
     </div>
   );

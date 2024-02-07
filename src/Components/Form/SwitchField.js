@@ -7,7 +7,7 @@ const SwitchField = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
 
   return (
-    <div className="d-flex align-items-center">
+    <div className="d-flex align-items-center mb-1">
       <InputSwitch
         checked={field.value}
         onChange={(e) => helpers.setValue(e.value)}

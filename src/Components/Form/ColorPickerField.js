@@ -1,7 +1,7 @@
 import React from "react";
 import { useField } from "formik";
 import { ColorPicker } from "primereact/colorpicker";
-import { FormFeedback } from "reactstrap";
+import { Message } from "primereact/message";
 
 const ColorPickerField = ({ label, ...props }) => {
   const [field, meta, helpers] = useField(props);
@@ -23,7 +23,7 @@ const ColorPickerField = ({ label, ...props }) => {
         onChange={handleChange}
       />
       {touched && error && (
-        <FormFeedback className="p-error">{error}</FormFeedback>
+        <Message severity="error" text={error} className="mt-1" />
       )}
     </div>
   );

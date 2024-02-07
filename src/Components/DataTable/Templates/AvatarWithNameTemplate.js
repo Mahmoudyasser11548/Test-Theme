@@ -18,7 +18,7 @@ const AvatarWithNameTemplate = ({
         width="32"
         className="me-2 rounded-pill"
       />
-      <span>{rowData.name}</span>
+      {rowData && <span>{rowData?.name}</span>}
     </div>
   );
 };

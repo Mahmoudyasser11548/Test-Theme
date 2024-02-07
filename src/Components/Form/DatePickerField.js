@@ -2,7 +2,7 @@ import React from "react";
 import { useField } from "formik";
 import { Calendar } from "primereact/calendar";
 import classNames from "classnames";
-import { FormFeedback } from "reactstrap";
+import { Message } from "primereact/message";
 
 const DatePickerField = ({
   label,
@@ -30,7 +30,9 @@ const DatePickerField = ({
         }}
         {...props}
       />
-      {touched && error && <span className="p-error">{error}</span>}
+      {touched && error && (
+        <Message severity="error" text={error} className="mt-1" />
+      )}
     </div>
   );
 };

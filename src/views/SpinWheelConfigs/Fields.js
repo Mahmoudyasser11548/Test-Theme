@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import {
   createField,
@@ -20,9 +19,10 @@ import {
   CustomDialog,
 } from "@customcomponents";
 import { FieldsColumns } from "./Columns";
-import { Trans } from "@lingui/react";
+import { Trans, useLingui } from "@lingui/react";
 
 const Fields = ({ wheelId, activeTab }) => {
+  const { i18n } = useLingui();
   const dispatch = useDispatch();
   const { openDeleteDialog, fields, loading, field_metadata } = useSelector(
     (state) => state.fields,
@@ -48,6 +48,7 @@ const Fields = ({ wheelId, activeTab }) => {
       id: "",
       name: "",
       isRequired: false,
+      wheelId,
     };
   };
 
@@ -59,13 +60,14 @@ const Fields = ({ wheelId, activeTab }) => {
     dispatch(createField(values));
     resetForm();
   };
-
   useEffect(() => {
-    dispatch(getFields({ ...filters }));
+    if (activeTab === "2") {
+      dispatch(getFields({ ...filters, wheelId }));
+    }
     return () => {
       dispatch(setFields());
     };
-  }, [filters]);
+  }, [filters, activeTab]);
 
   return (
     <>
@@ -91,7 +93,7 @@ const Fields = ({ wheelId, activeTab }) => {
               </Row>
             </Col>
           </Row>
-          <div className="d-flex justify-content-end text-end w-100">
+          <div className="d-flex justify-content-end text-end w-100 mb-1">
             <SubmitButton
               label={<Trans id="Save Changes" />}
               type="submit"
@@ -122,8 +124,8 @@ const Fields = ({ wheelId, activeTab }) => {
           </h3>
         }
         onConfirmHandler={confirmDeleteField}
-        closeButtonTitle={"No"}
-        confirmButtonTitle={"Yes"}
+        closeButtonTitle={i18n._("No")}
+        confirmButtonTitle={i18n._("Yes")}
       />
     </>
   );

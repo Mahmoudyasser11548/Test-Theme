@@ -16,8 +16,9 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Columns } from "./Columns";
-import { Trans } from "@lingui/react";
+import { Trans, useLingui } from "@lingui/react";
 const UsersList = ({ filters, setFilters }) => {
+  const { i18n } = useLingui();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -80,8 +81,8 @@ const UsersList = ({ filters, setFilters }) => {
           </h3>
         }
         onConfirmHandler={confirmDeleteUser}
-        closeButtonTitle={"No"}
-        confirmButtonTitle={"Yes"}
+        closeButtonTitle={i18n._("No")}
+        confirmButtonTitle={i18n._("Yes")}
       />
     </>
   );

@@ -4,7 +4,7 @@ import React from "react";
 import PhoneInput from "react-phone-input-2";
 
 import "react-phone-input-2/lib/material.css";
-import { FormFeedback, Label } from "reactstrap";
+import { Message } from "primereact/message";
 
 function PhoneField({ label, ...props }) {
   const [field, meta, helpers] = useField(props);
@@ -27,7 +27,9 @@ function PhoneField({ label, ...props }) {
         {...props}
         {...field}
       />
-      {error && touched && <span className="p-error">{error}</span>}
+      {error && touched && (
+        <Message severity="error" text={error} className="mt-1" />
+      )}
     </div>
   );
 }

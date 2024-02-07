@@ -3,8 +3,9 @@
 /* eslint-disable implicit-arrow-linebreak */
 import { Button, Media } from "reactstrap";
 import React, { useRef } from "react";
-import { Trash2, Upload } from "react-feather";
+import { Trash2 } from "react-feather";
 import { useField, useFormikContext } from "formik";
+import { Message } from "primereact/message";
 
 import logoDefault from "../../assets/images/imgs/no-image.png";
 
@@ -91,7 +92,9 @@ function ImageField({
         width={width}
         style={{ border: `${mode === "add" ? "dashed 2px grey" : ""}` }}
       />
-      {error ? <div className="mx-auto mt-1 text-danger">{error}</div> : null}
+      {error ? (
+        <Message severity="error" text={error} className="mt-1" />
+      ) : null}
 
       <div className="image-link">
         {enableRemove && imageValue !== logoDefault && (

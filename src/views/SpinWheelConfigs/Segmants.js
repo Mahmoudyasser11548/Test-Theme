@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +12,7 @@ import {
   CustomDialog,
 } from "@customcomponents";
 import configs from "@configs";
-import { Trans } from "@lingui/react";
+import { Trans, useLingui } from "@lingui/react";
 import { SegmantsColumns } from "./Columns";
 import {
   createSegmant,
@@ -26,6 +25,7 @@ import {
 } from "@store/slices/segmants";
 
 const Segmants = ({ wheelId, activeTab }) => {
+  const { i18n } = useLingui();
   const dispatch = useDispatch();
   const { segmant_metadata, segmants, loading, openDeleteDialog } = useSelector(
     (state) => state.segmants,
@@ -50,11 +50,11 @@ const Segmants = ({ wheelId, activeTab }) => {
 
   const initialValues = () => {
     return {
-      id: "",
       label: "",
       color: "#000000",
       textColor: "#000000",
       rewardId: "",
+      wheelId,
     };
   };
 
@@ -67,19 +67,21 @@ const Segmants = ({ wheelId, activeTab }) => {
 
   const onSubmit = (values, { resetForm }) => {
     if (values.id) {
-      dispatch(updateSegmant({ id: values.id, ...values }));
+      dispatch(updateSegmant({ payload: values, id: values.id }));
     } else {
       dispatch(createSegmant(values));
+      resetForm();
     }
-    resetForm();
   };
 
   useEffect(() => {
-    dispatch(getSegmants({ ...filters }));
+    if (activeTab === "4") {
+      dispatch(getSegmants({ ...filters, wheelId }));
+    }
     return () => {
       dispatch(setSegmants());
     };
-  }, [filters]);
+  }, [filters, activeTab]);
 
   return (
     <>
@@ -103,13 +105,13 @@ const Segmants = ({ wheelId, activeTab }) => {
                       <SelectField
                         name="rewardId"
                         label={<Trans id="Reward" />}
+                        keyValue="value"
+                        title="label"
                         options={[
                           { label: "Prize1", value: "prize1" },
                           { label: "Prize2", value: "prize2" },
                           { label: "Prize3", value: "prize3" },
                         ]}
-                        keyValue="value"
-                        title="label"
                       />
                     </Col>
 
@@ -162,8 +164,8 @@ const Segmants = ({ wheelId, activeTab }) => {
           </h3>
         }
         onConfirmHandler={confirmDeleteSegmant}
-        closeButtonTitle={"No"}
-        confirmButtonTitle={"Yes"}
+        closeButtonTitle={i18n._("No")}
+        confirmButtonTitle={i18n._("Yes")}
       />
     </>
   );
