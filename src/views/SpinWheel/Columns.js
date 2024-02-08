@@ -51,12 +51,12 @@ export const Columns = (deleteHandler, editHandler) => {
     {
       field: "name",
       header: "Name",
-      sortable: true,
+      sortable: false,
     },
     {
       field: "tenantName",
       header: "Tenant",
-      sortable: true,
+      sortable: false,
     },
     {
       field: "actions",

@@ -71,7 +71,6 @@ const WheelList = ({ filters, setFilters }) => {
         body={
           <>
             <CustomDataTable
-              keyField="id"
               setFilters={setFilters}
               loading={loading || false}
               metadata={spin_metadata || null}

@@ -48,7 +48,7 @@ const Fields = ({ wheelId, activeTab }) => {
       id: "",
       name: "",
       isRequired: false,
-      wheelId,
+      spinningWheelId: wheelId,
     };
   };
 
@@ -62,7 +62,7 @@ const Fields = ({ wheelId, activeTab }) => {
   };
   useEffect(() => {
     if (activeTab === "2") {
-      dispatch(getFields({ ...filters, wheelId }));
+      dispatch(getFields({ ...filters, spinningWheelId: wheelId }));
     }
     return () => {
       dispatch(setFields());

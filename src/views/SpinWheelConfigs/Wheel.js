@@ -1,5 +1,6 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+/* eslint-disable no-unused-expressions */
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import {
   InputField,
@@ -13,29 +14,38 @@ import {
 import { Trans } from "@lingui/react";
 import { Form, Formik } from "formik";
 import { Col, Row } from "reactstrap";
-import { createWheel, updateWheel } from "@store/slices/spinWheel";
+import {
+  createWheel,
+  updateWheel,
+  getWheelWithId,
+  setWheel,
+} from "@store/slices/spinWheel";
 import useFile from "@hooks/useFile";
+import { useParams } from "react-router-dom";
 
 const Wheel = () => {
+  const { id: wheelId } = useParams();
   const dispatch = useDispatch();
 
-  const initialValues = () => {
+  const { spin, loading } = useSelector((state) => state.spin);
+
+  const initialValues = (spin) => {
     return {
-      id: "",
-      name: "",
-      active: false,
-      showRewardsImages: false,
-      isAuthorized: false,
-      expiryDate: "",
-      bgColor: "#000000",
-      color: "#000000",
-      textColor: "#000000",
-      topHeader: "",
-      bottomHeader: "",
-      buttonText: "",
-      type: "",
-      logo: useFile(),
-      circleImg: useFile(),
+      id: spin?.id || "",
+      name: spin?.name || "",
+      active: spin?.active || false,
+      showRewardsImages: spin?.showRewardsImages || false,
+      isAuthorized: spin?.isAuthorized || false,
+      expiryDate: spin?.expiryDate || "",
+      bgColor: spin?.bgColor || "#000000",
+      color: spin?.color || "#000000",
+      textColor: spin?.textColor || "#000000",
+      topHeader: spin?.topHeader || "",
+      bottomHeader: spin?.bottomHeader || "",
+      buttonText: spin?.buttonText || "",
+      type: spin?.type || "",
+      logo: useFile(spin?.logo || {}),
+      circleImg: useFile(spin?.circleImg || {}),
     };
   };
 
@@ -58,11 +68,19 @@ const Wheel = () => {
     }
   };
 
+  useEffect(() => {
+    wheelId !== "new" && dispatch(getWheelWithId(wheelId));
+
+    return () => {
+      dispatch(setWheel());
+    };
+  }, [wheelId]);
+
   return (
     <>
       <Formik
         onSubmit={onSubmit}
-        initialValues={initialValues()}
+        initialValues={initialValues(spin)}
         enableReinitialize={true}
         validationSchema={validationSchema}
       >
@@ -167,6 +185,7 @@ const Wheel = () => {
                 <div className="d-flex justify-content-end text-end w-100">
                   <SubmitButton
                     label={<Trans id="Save Changes" />}
+                    loading={loading}
                     type="submit"
                     color="primary"
                     className="btn-primary ml-auto"

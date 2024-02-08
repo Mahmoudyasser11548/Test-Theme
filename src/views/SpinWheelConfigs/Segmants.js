@@ -36,25 +36,28 @@ const Segmants = ({ wheelId, activeTab }) => {
     pageSize: configs?.pageSize,
     filters: "",
   });
+  const [segmant, setSegmant] = useState("");
   const [segmantId, setSegmantId] = useState("");
 
   const deleteHandler = (rowData) => {
     setSegmantId(rowData?.id);
     dispatch(showDeleteDialog());
   };
-  const editHandler = () => {};
+  const editHandler = (rowData) => {
+    setSegmant(rowData);
+  };
 
   const confirmDeleteSegmant = () => {
     dispatch(deleteSegmant(segmantId));
   };
 
-  const initialValues = () => {
+  const initialValues = (segmant) => {
     return {
-      label: "",
-      color: "#000000",
-      textColor: "#000000",
-      rewardId: "",
-      wheelId,
+      label: segmant?.label || "",
+      color: segmant?.color || "#000000",
+      textColor: segmant?.textColor || "#000000",
+      rewardId: segmant?.rewardId || "",
+      spinningWheelId: wheelId,
     };
   };
 
@@ -76,7 +79,7 @@ const Segmants = ({ wheelId, activeTab }) => {
 
   useEffect(() => {
     if (activeTab === "4") {
-      dispatch(getSegmants({ ...filters, wheelId }));
+      dispatch(getSegmants({ ...filters, spinningWheelId: wheelId }));
     }
     return () => {
       dispatch(setSegmants());
@@ -86,7 +89,7 @@ const Segmants = ({ wheelId, activeTab }) => {
   return (
     <>
       <Formik
-        initialValues={initialValues()}
+        initialValues={initialValues(segmant)}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
         enableReinitialize={true}

@@ -71,7 +71,6 @@ const TenantsList = ({ filters, setFilters }) => {
         body={
           <>
             <CustomDataTable
-              keyField="id"
               setFilters={setFilters}
               loading={loading || false}
               metadata={tenants_metadata || null}

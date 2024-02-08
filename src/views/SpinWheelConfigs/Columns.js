@@ -18,7 +18,7 @@ export const SegmantsColumns = (deleteHandler, editHandler) => {
   };
 
   return [
-    { field: "label", header: "Label", sortable: true },
+    { field: "label", header: "Label", sortable: false },
     { field: "color", header: "Color" },
     {
       field: "actions",
@@ -54,7 +54,7 @@ export const FieldsColumns = (deleteHandler) => {
   };
 
   return [
-    { field: "name", header: "Name", sortable: true },
+    { field: "name", header: "Name", sortable: false },
     { field: "isRequired", header: "isRequired", body: activateTemplate },
     {
       field: "actions",

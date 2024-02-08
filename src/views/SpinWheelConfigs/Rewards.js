@@ -1,3 +1,4 @@
+/* eslint-disable nonblock-statement-body-position */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import * as yup from "yup";
@@ -71,7 +72,7 @@ const Rewards = ({ wheelId, activeTab }) => {
       image: useFile(reward?.image),
       lose: reward?.lose ? reward?.lose : false,
       isTryAgain: reward?.isTryAgain ? reward?.isTryAgain : false,
-      wheelId,
+      spinningWheelId: wheelId,
     };
   };
 
@@ -91,7 +92,8 @@ const Rewards = ({ wheelId, activeTab }) => {
   };
 
   useEffect(() => {
-    if (activeTab === "3") dispatch(getRewards({ ...filters, wheelId }));
+    if (activeTab === "3")
+      dispatch(getRewards({ ...filters, spinningWheelId: wheelId }));
   }, [filters, activeTab]);
 
   return (

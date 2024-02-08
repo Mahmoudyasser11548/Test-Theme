@@ -37,13 +37,13 @@ export const Columns = (deleteHandler, editHandler) => {
     {
       field: "name",
       header: "Name",
-      sortable: true,
+      sortable: false,
       body: AvatarImage,
     },
     {
       field: "phoneNumber",
       header: "Phone Number",
-      sortable: true,
+      sortable: false,
     },
     { field: "isActive", header: "isActive", body: activateTemplate },
     {

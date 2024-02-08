@@ -11,7 +11,7 @@ export default {
   devApiRoot: "https://localhost:5260/",
   // devApiRoot: "https://www.nileappco.com/api",
   pageOptions: [5, 10, 50, 100],
-  pageSize: 10,
+  pageSize: 5,
   contactPhone: "",
   contactMail: "",
   addressOnMap: "",

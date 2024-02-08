@@ -7,6 +7,7 @@ import Rewards from "./Rewards";
 import Segmants from "./Segmants";
 import Fields from "./Fields";
 import { Card } from "primereact/card";
+import { useSelector } from "react-redux";
 
 const WholeTabs = () => {
   const { id: wheelId } = useParams();
@@ -14,6 +15,7 @@ const WholeTabs = () => {
   const toggleTab = (tab) => {
     setActiveTab(tab);
   };
+  const { spin } = useSelector((state) => state.spin);
 
   return (
     <>
@@ -29,25 +31,25 @@ const WholeTabs = () => {
               <TabPane tabId="1">
                 <Wheel
                   activeTab={activeTab}
-                  wheelId={wheelId === "new" && wheelId}
+                  wheelId={wheelId === "new" ? spin?.id : wheelId}
                 />
               </TabPane>
               <TabPane tabId="2">
                 <Fields
                   activeTab={activeTab}
-                  wheelId={wheelId === "new" && wheelId}
+                  wheelId={wheelId === "new" ? spin?.id : wheelId}
                 />
               </TabPane>
               <TabPane tabId="3">
                 <Rewards
                   activeTab={activeTab}
-                  wheelId={wheelId === "new" && wheelId}
+                  wheelId={wheelId === "new" ? spin?.id : wheelId}
                 />
               </TabPane>
               <TabPane tabId="4">
                 <Segmants
                   activeTab={activeTab}
-                  wheelId={wheelId === "new" && wheelId}
+                  wheelId={wheelId === "new" ? spin?.id : wheelId}
                 />
               </TabPane>
             </TabContent>

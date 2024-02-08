@@ -20,12 +20,12 @@ export const Columns = (deleteHandler, editHandler) => {
     {
       field: "username",
       header: <Trans id="Username" />,
-      sortable: true,
+      sortable: false,
     },
     {
       field: "email",
       header: "Email",
-      sortable: true,
+      sortable: false,
     },
     {
       field: "actions",

@@ -99,7 +99,7 @@ function ImageField({
       <div className="image-link">
         {enableRemove && imageValue !== logoDefault && (
           <Button
-            className="btn-icon mb-1"
+            className="mb-1 delete-btn"
             color="danger"
             outline
             size="sm"

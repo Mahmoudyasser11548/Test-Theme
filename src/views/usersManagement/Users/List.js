@@ -59,7 +59,6 @@ const UsersList = ({ filters, setFilters }) => {
         title={"Users"}
         body={
           <CustomDataTable
-            keyField="id"
             setFilters={setFilters}
             loading={loading || false}
             metadata={user_metadata || null}

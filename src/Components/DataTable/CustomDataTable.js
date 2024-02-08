@@ -1,11 +1,12 @@
 /* eslint-disable no-mixed-operators */
 /* eslint-disable no-unused-expressions */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import Header from "./Header";
 import { Trans } from "@lingui/react";
 import { ProgressSpinner } from "primereact/progressspinner";
+import configs from "@configs";
 
 const CustomDataTable = ({
   dataKey = "id",
@@ -20,6 +21,14 @@ const CustomDataTable = ({
   loading,
   selection = {},
 }) => {
+  const [rowsPerPage, setRowsPerPage] = useState(configs?.pageSize);
+
+  useEffect(() => {
+    if (metadata && metadata.pageSize) {
+      setRowsPerPage(metadata.pageSize);
+    }
+  }, [metadata]);
+
   const clearFilters = () => {
     const clearedFilters = Object.keys(filters).reduce((acc, key) => {
       acc[key] = null;
@@ -53,6 +62,7 @@ const CustomDataTable = ({
 
   return (
     <DataTable
+      key={dataKey}
       stripedRows
       dataKey={dataKey}
       className="p-datatable-sm"
@@ -66,9 +76,9 @@ const CustomDataTable = ({
       onSort={handleSort}
       paginator
       onPage={handlePage}
-      first={(filters?.page - 1) * (filters?.pageSize || 10)}
-      rows={metadata?.pageSize || 10}
-      rowsPerPageOptions={[5, 10, 25, 50]}
+      first={(filters?.page - 1) * (filters?.pageSize || rowsPerPage)}
+      rows={rowsPerPage}
+      rowsPerPageOptions={configs?.pageOptions}
       totalRecords={metadata?.totalItemCount || 0}
       lazy
       resizableColumns={resizableColumns}
