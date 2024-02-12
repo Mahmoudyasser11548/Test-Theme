@@ -9,8 +9,8 @@ const NavbarUser = () => {
   return (
     <ul className="nav navbar-nav align-items-center ms-auto">
       <IntlDropdown />
-      <NotificationDropdown />
-      <ProgressDropdown />
+      {/* <NotificationDropdown />
+      <ProgressDropdown /> */}
       <UserDropdown />
     </ul>
   );
