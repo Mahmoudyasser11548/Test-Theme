@@ -21,6 +21,7 @@
     "animate.css": "4.1.1",
     "apexcharts": "^3.35.2",
     "apexcharts-clevision": "^3.28.5",
+    "apisauce": "^3.0.1",
     "axios": "^1.4.0",
     "axios-mock-adapter": "^1.20.0",
     "bootstrap": "^5.2.2",

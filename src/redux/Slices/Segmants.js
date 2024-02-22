@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import api from "../../services";
+import { api } from "../../services";
 
 export const createSegmant = createAsyncThunk(
   "segmant/create",
